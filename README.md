@@ -52,9 +52,9 @@ The following FFmpeg libraries are required:
 
 ### Building from Source
 
-1. **Clone the repository**:
+1. **Clone the repository including the VidCore submodule**:
    ```bash
-   git clone <repository-url>
+   git clone --recursive https://github.com/ptaru/VidPreview.git
    cd VidPreview
    ```
 
