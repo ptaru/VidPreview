@@ -8,7 +8,7 @@ A high-performance QuickLook extension for macOS that enables native video previ
 
 ## Overview
 
-VidPreview brings full video playback capabilities to macOS QuickLook (press **Space** in Finder) for MKV, WebM, AVI, and Ogg video files. Built on the [VidCore](VidCore/) framework, it provides hardware-accelerated decoding via VideoToolbox, HDR10 support, and GPU-accelerated rendering via Metal.
+VidPreview brings full video playback capabilities to macOS QuickLook (press **Space** in Finder) for MKV, WebM, AVI, and Ogg video files. Built on the [VidCore](https://github.com/ptaru/VidCore) framework, it provides hardware-accelerated decoding via VideoToolbox, HDR10 support, and GPU-accelerated rendering via Metal.
 
 ## Features
 
