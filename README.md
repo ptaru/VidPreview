@@ -134,9 +134,9 @@ VidPreview/
 
 ## VidCore Framework
 
-VidPreview is built on the [VidCore](VidCore/) framework, a high-performance video decoding and rendering framework for macOS. VidCore can be used independently in other macOS applications for video playback needs.
+VidPreview is built on the [VidCore](https://github.com/ptaru/VidCore) framework, a high-performance video decoding and rendering framework for macOS. VidCore can be used independently in other macOS applications for video playback needs.
 
-See [VidCore/README.md](VidCore/README.md) for detailed API documentation.
+See [VidCore/README.md](https://github.com/ptaru/VidCore/blob/main/README.md) for detailed API documentation.
 
 ## HDR Support
 
