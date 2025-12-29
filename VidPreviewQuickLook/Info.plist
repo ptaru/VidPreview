@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSExtension</key>
+	<dict>
+		<key>NSExtensionAttributes</key>
+		<dict>
+			<key>QLIsDataBasedPreview</key>
+			<false/>
+			<key>QLSupportedContentTypes</key>
+			<array>
+				<string>org.matroska.mkv</string>
+				<string>org.webmproject.webm</string>
+				<string>public.avi</string>
+				<string>org.xiph.ogg-video</string>
+			</array>
+			<key>QLSupportsSearchableItems</key>
+			<false/>
+		</dict>
+		<key>NSExtensionPointIdentifier</key>
+		<string>com.apple.quicklook.preview</string>
+		<key>NSExtensionPrincipalClass</key>
+		<string>$(PRODUCT_MODULE_NAME).PreviewViewController</string>
+	</dict>
+	<key>UTImportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.movie</string>
+				<string>public.audiovisual-content</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>WebM Video</string>
+			<key>UTTypeIdentifier</key>
+			<string>org.webmproject.webm</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>webm</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>video/webm</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.movie</string>
+				<string>public.audiovisual-content</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Matroska Video</string>
+			<key>UTTypeIdentifier</key>
+			<string>org.matroska.mkv</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>mkv</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>video/x-matroska</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.movie</string>
+				<string>public.audiovisual-content</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Ogg Theora Video</string>
+			<key>UTTypeIdentifier</key>
+			<string>org.xiph.ogg-video</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>ogv</string>
+					<string>ogg</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>video/ogg</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
