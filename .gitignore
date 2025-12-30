@@ -129,6 +129,7 @@ dist/
 .vscode/
 .idea/
 *.sublime-*
+buildServer.json
 
 # Testing
 *.gcov
