@@ -65,12 +65,13 @@ struct SettingsView: View {
                 HStack(spacing: 16) {
                     FormatBadge(format: "MKV")
                     FormatBadge(format: "WebM")
+                    FormatBadge(format: "AVI")
                     FormatBadge(format: "Ogg")
                 }
             }
             
             // Footer
-            Text("Made by Tarun, Powered by FFmpeg")
+            Text("Made by Tarun")
                 .font(.caption)
                 .foregroundStyle(.tertiary)
                 .padding(.bottom, 16)
