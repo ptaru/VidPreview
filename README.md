@@ -25,28 +25,6 @@ VidPreview brings full video playback capabilities to macOS QuickLook (press **S
 
 - macOS 15.0 or later
 - Xcode 15.0 or later
-- FFmpeg 6.0 or later (installed via Homebrew)
-
-## Dependencies
-
-### FFmpeg
-
-VidPreview requires FFmpeg for video decoding. Install it via Homebrew:
-
-```bash
-# Install FFmpeg
-brew install ffmpeg
-
-# Verify installation
-ffmpeg -version
-```
-
-The following FFmpeg libraries are required:
-- `libavcodec` - Codec library
-- `libavformat` - Container format library
-- `libavutil` - Utility library
-- `libswresample` - Audio resampling library
-- `libswscale` - Video scaling library
 
 ## Installation
 
@@ -58,25 +36,17 @@ The following FFmpeg libraries are required:
    cd VidPreview
    ```
 
-2. **Install FFmpeg** (if not already installed):
+2. **Build FFmpeg + dav1d**:
+
+   VidPreview uses bundled static libraries for FFmpeg and dav1d. If they are missing, build them using the included script:
+
    ```bash
-   brew install ffmpeg
-   ```
+   # Install build tools
+   brew install nasm meson ninja pkg-config
 
-3. **Configure FFmpeg paths** in Xcode:
-
-   The project is pre-configured to use FFmpeg from Homebrew's default location. If your FFmpeg installation is in a different location, update the build settings:
-
-   - Open `VidPreview.xcodeproj` in Xcode
-   - Select the **VidCore** target
-   - Go to **Build Settings**
-   - Update the following paths to match your FFmpeg installation:
-     - **Header Search Paths**: `/opt/homebrew/Cellar/ffmpeg/<version>/include`
-     - **Library Search Paths**: `/opt/homebrew/Cellar/ffmpeg/<version>/lib`
-
-   To find your FFmpeg path:
-   ```bash
-   brew info ffmpeg | grep Cellar
+   # Run build script
+   cd VidCore/Scripts
+   ./build-ffmpeg.sh
    ```
 
 4. **Build the project**:
@@ -169,28 +139,14 @@ VidCore includes several optimizations for efficient video playback:
 
 ### Video not playing
 
-1. Ensure FFmpeg is installed: `brew list ffmpeg`
-2. Check that the video file is a supported format
-3. View Console.app for error messages (filter by "VidPreview" or "VidCore")
+1. Check that the video file is a supported format
+2. View Console.app for error messages (filter by "VidPreview" or "VidCore")
 
 ### Build errors
 
-1. Verify FFmpeg installation: `brew info ffmpeg`
-2. Check that Header Search Paths and Library Search Paths in Xcode match your FFmpeg installation
+1. Ensure FFmpeg libraries were built: `ls VidCore/Frameworks/FFmpeg/lib`
+2. If missing, run `VidCore/Scripts/build-ffmpeg.sh`
 3. Clean build folder (⇧⌘K) and rebuild
-
-### FFmpeg library not found
-
-If you get linker errors about missing FFmpeg libraries:
-
-```bash
-# Check FFmpeg installation
-brew info ffmpeg
-
-# Update the paths in Xcode Build Settings for VidCore target:
-# Header Search Paths: /opt/homebrew/Cellar/ffmpeg/<YOUR_VERSION>/include
-# Library Search Paths: /opt/homebrew/Cellar/ffmpeg/<YOUR_VERSION>/lib
-```
 
 ## Development
 

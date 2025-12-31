@@ -2,7 +2,7 @@ CompileFlags:
   Add:
     - "-isysroot"
     - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
-    - "-I/opt/homebrew/opt/ffmpeg/include"
+    - "-I/Users/pltarun/Developer/VidPreview/VidCore/Frameworks/FFmpeg/include"
     - "-I."
     - "-IVidCore"
     - "-IVidCore/Decoding"
