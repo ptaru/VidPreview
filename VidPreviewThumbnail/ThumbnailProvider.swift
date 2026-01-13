@@ -38,8 +38,17 @@ class ThumbnailProvider: QLThumbnailProvider {
                 if let coverData = decoder.extractCoverImage(),
                     let image = NSImage(data: coverData)
                 {
-                    let reply = QLThumbnailReply(contextSize: targetSize) { () -> Bool in
-                        Self.drawImage(image, in: targetSize)
+                    // Use the cover image's own dimensions, not the video dimensions
+                    let coverWidth = image.size.width
+                    let coverHeight = image.size.height
+                    let coverTargetSize = Self.calculateThumbnailSize(
+                        videoWidth: coverWidth,
+                        videoHeight: coverHeight,
+                        maxSize: maxSize
+                    )
+                    
+                    let reply = QLThumbnailReply(contextSize: coverTargetSize) { () -> Bool in
+                        Self.drawImage(image, in: coverTargetSize)
                     }
                     handler(reply, nil)
                     decoder.close()
