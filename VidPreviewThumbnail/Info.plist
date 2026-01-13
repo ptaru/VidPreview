@@ -6,8 +6,6 @@
 	<dict>
 		<key>NSExtensionAttributes</key>
 		<dict>
-			<key>QLIsDataBasedPreview</key>
-			<false/>
 			<key>QLSupportedContentTypes</key>
 			<array>
 				<string>public.movie</string>
@@ -152,13 +150,13 @@
 				<string>com.firecore.fileformat.mxf</string>
 				<string>com.firecore.fileformat.dvdmedia</string>
 			</array>
-			<key>QLSupportsSearchableItems</key>
-			<false/>
+			<key>QLThumbnailMinimumDimension</key>
+			<integer>0</integer>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>
-		<string>com.apple.quicklook.preview</string>
+		<string>com.apple.quicklook.thumbnail</string>
 		<key>NSExtensionPrincipalClass</key>
-		<string>$(PRODUCT_MODULE_NAME).PreviewViewController</string>
+		<string>$(PRODUCT_MODULE_NAME).ThumbnailProvider</string>
 	</dict>
 </dict>
 </plist>
