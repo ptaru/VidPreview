@@ -15,7 +15,7 @@ VidPreview brings full video playback capabilities to macOS QuickLook (press **S
 - **QuickLook Integration**: Preview videos directly in Finder with spacebar
 - **Broad Container Support**: MKV, WebM, AVI, Ogg/Theora
 - **Wide Codec Support**: H.264, H.265/HEVC, VP8, VP9, AV1, and more
-- **HDR10 Support**: Correctly renders HDR content on supported displays
+- **HDR Support**: Full HDR10 and Dolby Vision Profile 5 support with automatic tone mapping
 - **Audio Playback**: Synchronized audio support
 - **Thumbnail Support**: Generates thumbnails for unsupported video formats in Finder
 
