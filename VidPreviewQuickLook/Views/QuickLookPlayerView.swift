@@ -25,7 +25,7 @@ struct QuickLookPlayerView: View {
                 HStack {
                     Spacer()
                     QLVolumeControl(viewModel: viewModel)
-                        .glassEffect()
+                        .glassedEffect(in: .capsule, interactive: true)
                         .padding(8)
                         .opacity(shouldShowControls ? 1 : 0)
                 }
@@ -33,7 +33,7 @@ struct QuickLookPlayerView: View {
                 Spacer()
                 
                 QLPlayerControls(viewModel: viewModel)
-                    .glassEffect()
+                    .glassedEffect(in: .capsule, interactive: true)
                     .padding(8)
                     .opacity(shouldShowControls ? 1 : 0)
             }
