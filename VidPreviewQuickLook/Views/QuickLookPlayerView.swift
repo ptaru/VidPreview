@@ -19,7 +19,7 @@ struct QuickLookPlayerView: View {
     }
     
     var body: some View {
-        VidPlayer(player: viewModel.player) {
+        VidPlayer(player: viewModel.player, allowsDebugMenu: true) {
             // Controls overlay - just the bottom bar and volume
             VStack {
                 HStack {
