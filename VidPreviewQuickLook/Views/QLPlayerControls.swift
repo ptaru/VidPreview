@@ -9,9 +9,6 @@ import VidCore
 struct QLPlayerControls: View {
     @Bindable var viewModel: QuickLookViewModel
     @State private var seekPosition: Double = 0.0
-    @State private var lastSeekTime: Date = .distantPast
-    
-    private let seekThrottleInterval: TimeInterval = 0.1
     
     var body: some View {
         HStack(spacing: 12) {
@@ -43,28 +40,15 @@ struct QLPlayerControls: View {
                     onEditingChanged: { editing in
                         if editing {
                             viewModel.startScrubbing()
+                            viewModel.scrub(to: seekPosition)
                         } else {
-                            viewModel.currentTime = seekPosition
-                            lastSeekTime = .distantPast
-                            
-                            Task {
-                                await viewModel.seek(to: seekPosition, accurate: true)
-                                viewModel.stopScrubbing()
-                            }
+                            viewModel.endScrubbing(at: seekPosition)
                         }
                     }
                 )
                 .onChange(of: seekPosition) { _, newValue in
                     if viewModel.isScrubbing {
-                        let now = Date()
-                        if now.timeIntervalSince(lastSeekTime) >= seekThrottleInterval {
-                            lastSeekTime = now
-                            viewModel.currentTime = newValue
-                            
-                            Task {
-                                await viewModel.seek(to: newValue, accurate: false)
-                            }
-                        }
+                        viewModel.scrub(to: newValue)
                     }
                 }
                 .disabled(viewModel.playbackState == .loading || viewModel.playbackState == .idle)

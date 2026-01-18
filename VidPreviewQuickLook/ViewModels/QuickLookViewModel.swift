@@ -93,18 +93,43 @@ class QuickLookViewModel {
     
     // MARK: - Scrubbing
     
+    private var scrubTask: Task<Void, Never>?
+    
     func startScrubbing() {
-        isScrubbing = true
-        playbackWasActiveBeforeScrub = isPlaying
-        if isPlaying {
-            pause()
+        // Only modify state if we aren't already scrubbing
+        if !isScrubbing {
+            isScrubbing = true
+            playbackWasActiveBeforeScrub = isPlaying
+            if isPlaying {
+                pause()
+            }
         }
     }
     
-    func stopScrubbing() {
+    func scrub(to time: Double) {
+        // Cancel any pending inaccurate seek
+        scrubTask?.cancel()
+        
+        scrubTask = Task {
+            // Debounce slightly to avoid flooding the decoder during rapid dragging
+            try? await Task.sleep(nanoseconds: 10_000_000) // 10ms
+            if Task.isCancelled { return }
+            
+            await player.seek(to: time, accurate: false)
+        }
+    }
+    
+    func endScrubbing(at time: Double) {
+        scrubTask?.cancel()
         isScrubbing = false
-        if playbackWasActiveBeforeScrub {
-            play()
+        
+        Task {
+            // Perform final accurate seek
+            await player.seek(to: time, accurate: true)
+            
+            if playbackWasActiveBeforeScrub {
+                play()
+            }
         }
     }
     
