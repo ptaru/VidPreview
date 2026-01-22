@@ -20,7 +20,6 @@ struct QLVolumeControl: View {
             }) {
                 Image(systemName: volumeIcon)
                     .font(.system(size: 14, weight: .medium))
-                    .foregroundColor(.white)
                     .frame(width: 24, height: 24)
             }
             .buttonStyle(.plain)

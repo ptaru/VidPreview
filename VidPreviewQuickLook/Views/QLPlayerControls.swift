@@ -17,7 +17,6 @@ struct QLPlayerControls: View {
             }) {
                 Image(systemName: playButtonIcon)
                     .font(.title2)
-                    .foregroundColor(.white)
                     .frame(width: 32, height: 32)
             }
             .buttonStyle(.plain)
@@ -25,7 +24,6 @@ struct QLPlayerControls: View {
             
             Text(formatTime(viewModel.isScrubbing ? seekPosition : viewModel.currentTime))
                 .font(.caption)
-                .foregroundColor(.white)
                 .monospacedDigit()
             .onChange(of: viewModel.currentTime) { _, newValue in
                 if !viewModel.isScrubbing {
@@ -54,13 +52,12 @@ struct QLPlayerControls: View {
                 .disabled(viewModel.playbackState == .loading || viewModel.playbackState == .idle)
             } else {
                 RoundedRectangle(cornerRadius: 2)
-                    .fill(Color.white.opacity(0.3))
+                    .fill(Color.white)
                     .frame(height: 4)
             }
             
             Text(formatTime(viewModel.duration))
                 .font(.caption)
-                .foregroundColor(.white.opacity(0.7))
                 .monospacedDigit()
                 .padding(.trailing, 8)
         }
