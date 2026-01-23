@@ -2,7 +2,7 @@
 
 A high-performance QuickLook extension for macOS that enables native video preview in Finder for formats not natively supported by macOS.
 
-![Platform](https://img.shields.io/badge/platform-macOS%2026.0%2B-blue)
+![Platform](https://img.shields.io/badge/platform-macOS%2015.6%2B-blue)
 ![Swift](https://img.shields.io/badge/Swift-6.0-orange)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
@@ -25,9 +25,15 @@ VidPreview is powered by [VidCore](https://github.com/ptaru/VidCore), a high-per
 
 ## Requirements
 
-- macOS 26.0 or later
+- macOS 15.6 or later
 
 ## Installation
+
+### Homebrew
+
+```bash
+brew install ptaru/tap/vidpreview
+```
 
 ### Building from Source
 
