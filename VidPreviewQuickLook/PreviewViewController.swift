@@ -184,8 +184,8 @@ class PreviewViewController: NSViewController, QLPreviewingController {
     private func calculatePreferredSize() -> NSSize? {
         guard let info = viewModel?.videoInfo else { return nil }
 
-        let maxWidth: CGFloat = 1280
-        let maxHeight: CGFloat = 720
+        let maxWidth: CGFloat = 1920
+        let maxHeight: CGFloat = 1080
 
         var width = CGFloat(info.width)
         var height = CGFloat(info.height)
@@ -225,11 +225,11 @@ class PreviewViewController: NSViewController, QLPreviewingController {
         // Or better: if either dimension is < 50% of preferred, it's likely a thumbnail view.
         // Actually, Finder sidebar width is usually restricted.
 
-        let minimumWidthRatio = 0.8
-        let minimumHeightRatio = 0.8
+        let minimumWidthRatio = 0.5
+        let minimumHeightRatio = 0.5
 
         // Case: video is small (e.g. 200x200), sidebar might be 200x200 too.
-        // But usually preferred size is the full video size (constrained to 1280x720).
+        // But usually preferred size is the full video size (constrained to 1920x1080).
 
         let isWidthOk = currentSize.width >= (preferred.width * minimumWidthRatio)
         let isHeightOk = currentSize.height >= (preferred.height * minimumHeightRatio)
