@@ -25,6 +25,7 @@ class QuickLookViewModel {
     var isScrubbing: Bool = false
     private(set) var isFinishingScrub: Bool = false
     private(set) var playbackWasActiveBeforeScrub: Bool = false
+    private(set) var userManuallyPaused: Bool = false
     
     // MARK: - Passthrough Properties
     
@@ -80,16 +81,26 @@ class QuickLookViewModel {
     
     // MARK: - Playback Control
     
-    func play() {
+    func play(manually: Bool = false) {
+        if manually {
+            userManuallyPaused = false
+        }
         player.play()
     }
     
-    func pause() {
+    func pause(manually: Bool = false) {
+        if manually {
+            userManuallyPaused = true
+        }
         player.pause()
     }
     
     func togglePlayPause() {
-        player.togglePlayPause()
+        if isPlaying {
+            pause(manually: true)
+        } else {
+            play(manually: true)
+        }
     }
     
     // MARK: - Scrubbing

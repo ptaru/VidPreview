@@ -155,8 +155,8 @@ class PreviewViewController: NSViewController, QLPreviewingController {
     private func becameActivePreview() {
         PreviewRegistry.shared.pauseAllExcept(self)
 
-        // Only resume if we should be playing
-        if let vm = viewModel, !vm.isPlaying {
+        // Only resume if we should be playing AND the user hasn't manually paused
+        if let vm = viewModel, !vm.isPlaying, !vm.userManuallyPaused {
             if isViewportLargeEnough() {
                 logger.debug(
                     "[PreviewViewController] Resuming playback: \(self.currentFileURL?.lastPathComponent ?? "unknown", privacy: .public)"
