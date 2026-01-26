@@ -37,7 +37,6 @@ class QuickLookViewModel {
     }
     var duration: Double { player.duration }
     var videoInfo: VideoInfo? { player.videoInfo }
-    var renderingEngine: RenderingEngine? { player.renderingEngine }
     var isPlaying: Bool { player.isPlaying }
     
     var volume: Double {

@@ -62,11 +62,6 @@ class ThumbnailProvider: QLThumbnailProvider {
 
                 Task {
                     // Initialize rendering engine for GPU-accelerated YUV conversion
-                    guard let renderingEngine = RenderingEngine() else {
-                        extractionError = ThumbnailError.renderingEngineInitFailed
-                        semaphore.signal()
-                        return
-                    }
 
                     // Try multiple seek positions as fallback
                     // Some files may have issues seeking to certain positions
@@ -106,10 +101,9 @@ class ThumbnailProvider: QLThumbnailProvider {
                                 if case .video(let videoFrame) = frame {
                                     // Use VidCore's Metal-based rendering to convert to CGImage
                                     // This handles all pixel formats (I420, NV12, P010, etc.)
-                                    extractedCGImage = renderingEngine.renderToCGImage(
-                                        videoFrame,
-                                        targetSize: targetSize
-                                    )
+                                    // Use System Renderer logic to convert to CGImage
+                                    // This handles all pixel formats and Dolby Vision
+                                    extractedCGImage = AVSystemVideoRenderer.createCGImage(from: videoFrame)
                                     break
                                 }
                             }
@@ -127,7 +121,6 @@ class ThumbnailProvider: QLThumbnailProvider {
                         }
                     }
 
-                    renderingEngine.flush()
                     semaphore.signal()
                 }
 
@@ -206,13 +199,10 @@ class ThumbnailProvider: QLThumbnailProvider {
 // MARK: - Errors
 
 enum ThumbnailError: Error, LocalizedError {
-    case renderingEngineInitFailed
     case noFrameExtracted
 
     var errorDescription: String? {
         switch self {
-        case .renderingEngineInitFailed:
-            return "Failed to initialize Metal rendering engine"
         case .noFrameExtracted:
             return "Failed to extract video frame"
         }
