@@ -17,7 +17,7 @@ private let logger = Logger(subsystem: "com.vidpreview.quicklook", category: "vi
 class QuickLookViewModel {
     // MARK: - Player
     
-    let player = VideoPlayer(frameBufferSize: 3, packetQueueSize: 10)
+    let player = VideoPlayer(frameBufferSize: 6, packetQueueSize: 6)
     private let url: URL
     
     // MARK: - UI State (QuickLook-specific)
