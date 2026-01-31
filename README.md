@@ -21,7 +21,7 @@ VidPreview brings full video playback capabilities to macOS QuickLook (press **S
 
 ## VidCore
 
-VidPreview is powered by [VidCore](https://github.com/ptaru/VidCore), a high-performance video decoding and rendering framework built on FFmpeg.
+VidPreview is powered by [VidCore](https://github.com/ptaru/VidCore), a Swift-based video playback framework built on FFmpeg and VideoToolbox.
 
 ## Requirements
 
@@ -72,15 +72,6 @@ brew install ptaru/tap/vidpreview
 3. Press **Space** to open QuickLook
 4. Video will play automatically with full playback controls
 
-### Supported Formats
-
-| Format | Extension | Container | Typical Codecs |
-|--------|-----------|-----------|----------------|
-| Matroska | `.mkv` | MKV | H.264, H.265, VP9, AV1 |
-| WebM | `.webm` | WebM | VP8, VP9, AV1 |
-| AVI | `.avi` | AVI | H.264, MPEG-4, DivX, Xvid |
-| Ogg | `.ogg`, `.ogv` | Ogg | Theora |
-
 ### Supported Codecs
 
 **Video**: H.264, H.265/HEVC, VP8, VP9, AV1, MPEG-4, Theora, and more
@@ -109,9 +100,7 @@ brew install ptaru/tap/vidpreview
 
 ## Acknowledgments
 
-- **FFmpeg** - Video decoding and container format support
-- **Metal** - GPU-accelerated rendering
-- **VideoToolbox** - Hardware acceleration on Apple Silicon
+- **FFmpeg** - Video demuxing and decoding support
 
 ---
 
