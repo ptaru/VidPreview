@@ -13,21 +13,28 @@ struct QuickLookPlayerView: View {
     @State private var isHovering = false
     @State private var forceShowControls = false
     @State private var hideTask: Task<Void, Never>?
+    @State private var isAudioTrackMenuVisible = false
     
     private var shouldShowControls: Bool {
-        isHovering || forceShowControls || viewModel.playbackState == .finished
+        isHovering || forceShowControls || isAudioTrackMenuVisible || viewModel.playbackState == .finished
     }
     
     var body: some View {
         VidPlayer(player: viewModel.player, allowsDebugMenu: true) {
-            // Controls overlay - just the bottom bar and volume
+            // Controls overlay - volume, audio track selector, and bottom bar
             VStack {
                 HStack {
                     Spacer()
-                    QLVolumeControl(viewModel: viewModel)
-                        .glassedEffect(in: .capsule, interactive: true)
-                        .padding(8)
-                        .opacity(shouldShowControls ? 1 : 0)
+                    HStack(spacing: 8) {
+                        if viewModel.audioTracks.count > 0 {
+                            QLAudioTrackSelector(viewModel: viewModel, isMenuPresented: $isAudioTrackMenuVisible)
+                                .glassedEffect(in: .capsule, interactive: true)
+                        }
+                        QLVolumeControl(viewModel: viewModel)
+                            .glassedEffect(in: .capsule, interactive: true)
+                    }
+                    .padding(8)
+                    .opacity(shouldShowControls ? 1 : 0)
                 }
                 
                 Spacer()

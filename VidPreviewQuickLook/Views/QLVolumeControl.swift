@@ -21,6 +21,7 @@ struct QLVolumeControl: View {
                 Image(systemName: volumeIcon)
                     .font(.system(size: 14, weight: .medium))
                     .frame(width: 24, height: 24)
+                    .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
         }

@@ -18,6 +18,7 @@ struct QLPlayerControls: View {
                 Image(systemName: playButtonIcon)
                     .font(.title2)
                     .frame(width: 32, height: 32)
+                    .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
             .disabled(viewModel.playbackState == .loading || viewModel.playbackState == .idle)
