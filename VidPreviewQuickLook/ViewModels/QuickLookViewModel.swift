@@ -17,7 +17,7 @@ private let logger = Logger(subsystem: "com.vidpreview.quicklook", category: "vi
 class QuickLookViewModel {
     // MARK: - Player
     
-    let player = VideoPlayer(frameBufferSize: 6, packetQueueSize: 100)
+    let player = VideoPlayer(buffers: .auto)
     private let url: URL
     
     // MARK: - UI State (QuickLook-specific)
@@ -170,5 +170,22 @@ class QuickLookViewModel {
     nonisolated deinit {
         print("[QuickLookViewModel] DEINIT - deallocating")
         cleanupSync()
+    }
+    
+    // MARK: - Audio Track Selection
+    
+    /// All available audio tracks in the current video.
+    var audioTracks: [AudioTrackInfo] {
+        player.audioTracks
+    }
+    
+    /// Index of the currently selected audio track.
+    var selectedAudioTrackIndex: Int {
+        player.selectedAudioTrackIndex
+    }
+    
+    /// Select an audio track by its index.
+    func selectAudioTrack(at index: Int) async {
+        await player.selectAudioTrack(at: index)
     }
 }

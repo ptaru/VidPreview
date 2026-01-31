@@ -130,7 +130,7 @@
 			);
 			publicHeaders = (
 				Decoding/FFmpegDecoder.h,
-				Decoding/FFmpegDemuxer.h,
+				Demuxing/FFmpegDemuxer.h,
 				VidCore.h,
 			);
 			target = 58F669A82EF6C847003BA262 /* VidCore */;
