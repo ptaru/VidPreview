@@ -239,7 +239,7 @@ private struct SubtitleRow: View {
                 .foregroundColor(.secondary)
 
               if track.isDefault {
-                ForcedBadge()
+                DefaultBadge()
               }
             }
           } else {
@@ -264,18 +264,6 @@ private struct SubtitleRow: View {
 private struct DefaultBadge: View {
   var body: some View {
     Text("Default")
-      .font(.system(size: 9, weight: .medium))
-      .foregroundColor(.orange)
-      .padding(.horizontal, 4)
-      .padding(.vertical, 1)
-      .background(Color.orange.opacity(0.15))
-      .cornerRadius(3)
-  }
-}
-
-private struct ForcedBadge: View {
-  var body: some View {
-    Text("Forced")
       .font(.system(size: 9, weight: .medium))
       .foregroundColor(.orange)
       .padding(.horizontal, 4)
