@@ -126,7 +126,6 @@ dist/
 *.bak
 
 # IDE
-.vscode/
 .idea/
 *.sublime-*
 buildServer.json
