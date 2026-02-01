@@ -45,11 +45,11 @@ struct QLTrackSelector: View {
 
           if let sub = selectedSubtitleTrack {
             if selectedAudioTrack != nil {
-              Text("•")
+              Text(" ")
                 .foregroundColor(.secondary)
             }
             Image(systemName: "captions.bubble.fill")
-              .font(.system(size: 9))
+              .font(.system(size: 14, weight: .medium))
             Text(sub.shortDisplayName)
           }
         }
@@ -74,75 +74,76 @@ private struct TrackMenu: View {
   var body: some View {
     VStack(alignment: .leading, spacing: 0) {
       ScrollView {
-        VStack(alignment: .leading, spacing: 0) {
+        LazyVStack(alignment: .leading, spacing: 0, pinnedViews: [.sectionHeaders]) {
           // Subtitles Section (Above Audio)
           if !viewModel.subtitleTracks.isEmpty {
-            MenuSectionHeader(title: "Subtitles")
-
-            Divider()
-              .padding(.horizontal, 16)
-
-            VStack(alignment: .leading, spacing: 0) {
-              // Off Option
-              SubtitleRow(
-                track: nil,
-                index: -1,
-                isSelected: viewModel.selectedSubtitleTrackIndex == -1,
-                action: {
-                  Task { await viewModel.selectSubtitleTrack(at: -1) }
-                  isPresented = false
+            Section(
+              header:
+                VStack(alignment: .leading, spacing: 0) {
+                  MenuSectionHeader(title: "Subtitles")
+                  Divider()
                 }
-              )
-
-              ForEach(Array(viewModel.subtitleTracks.enumerated()), id: \.element.id) {
-                index, track in
+                .background(.ultraThinMaterial)
+            ) {
+              VStack(alignment: .leading, spacing: 0) {
+                // Off Option
                 SubtitleRow(
-                  track: track,
-                  index: index,
-                  isSelected: index == viewModel.selectedSubtitleTrackIndex,
+                  track: nil,
+                  index: -1,
+                  isSelected: viewModel.selectedSubtitleTrackIndex == -1,
                   action: {
-                    Task { await viewModel.selectSubtitleTrack(at: index) }
+                    Task { await viewModel.selectSubtitleTrack(at: -1) }
                     isPresented = false
                   }
                 )
+
+                ForEach(Array(viewModel.subtitleTracks.enumerated()), id: \.element.id) {
+                  index, track in
+                  SubtitleRow(
+                    track: track,
+                    index: index,
+                    isSelected: index == viewModel.selectedSubtitleTrackIndex,
+                    action: {
+                      Task { await viewModel.selectSubtitleTrack(at: index) }
+                      isPresented = false
+                    }
+                  )
+                }
               }
             }
-          }
-
-          if !viewModel.subtitleTracks.isEmpty && !viewModel.audioTracks.isEmpty {
-            Divider()
-              .padding(.horizontal, 16)
-              .padding(.vertical, 4)
           }
 
           // Audio Section
           if !viewModel.audioTracks.isEmpty {
-            MenuSectionHeader(title: "Audio Tracks")
-
-            Divider()
-              .padding(.horizontal, 16)
-
-            VStack(alignment: .leading, spacing: 0) {
-              ForEach(Array(viewModel.audioTracks.enumerated()), id: \.element.id) { index, track in
-                AudioTrackRow(
-                  track: track,
-                  index: index,
-                  isSelected: index == viewModel.selectedAudioTrackIndex,
-                  action: {
-                    Task { await viewModel.selectAudioTrack(at: index) }
-                    isPresented = false
-                  }
-                )
+            Section(
+              header:
+                VStack(alignment: .leading, spacing: 0) {
+                  MenuSectionHeader(title: "Audio Tracks")
+                  Divider()
+                }
+                .background(.ultraThinMaterial)
+            ) {
+              VStack(alignment: .leading, spacing: 0) {
+                ForEach(Array(viewModel.audioTracks.enumerated()), id: \.element.id) {
+                  index, track in
+                  AudioTrackRow(
+                    track: track,
+                    index: index,
+                    isSelected: index == viewModel.selectedAudioTrackIndex,
+                    action: {
+                      Task { await viewModel.selectAudioTrack(at: index) }
+                      isPresented = false
+                    }
+                  )
+                }
               }
             }
           }
         }
-        .padding(.vertical, 8)
       }
       .frame(maxHeight: 300)
     }
     .padding(.bottom, 6)
-    .background(Color(NSColor.controlBackgroundColor))
   }
 }
 
@@ -238,7 +239,7 @@ private struct SubtitleRow: View {
                 .foregroundColor(.secondary)
 
               if track.isDefault {
-                DefaultBadge()
+                ForcedBadge()
               }
             }
           } else {
@@ -263,6 +264,18 @@ private struct SubtitleRow: View {
 private struct DefaultBadge: View {
   var body: some View {
     Text("Default")
+      .font(.system(size: 9, weight: .medium))
+      .foregroundColor(.orange)
+      .padding(.horizontal, 4)
+      .padding(.vertical, 1)
+      .background(Color.orange.opacity(0.15))
+      .cornerRadius(3)
+  }
+}
+
+private struct ForcedBadge: View {
+  var body: some View {
+    Text("Forced")
       .font(.system(size: 9, weight: .medium))
       .foregroundColor(.orange)
       .padding(.horizontal, 4)
