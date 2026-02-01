@@ -1,0 +1,23 @@
+CompileFlags:
+  Add:
+    - "-isysroot"
+    - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
+    - "-IVidCore/Frameworks/FFmpeg/include"
+    - "-IVidCore/Demuxing"
+    - "-IVidCore/Decoding"
+    - "-IVidCore/Rendering"
+    - "-IVidCore/Playback"
+    - "-IVidCore/Buffers"
+    - "-IVidCore/Types"
+    - "-fobjc-arc"
+    - "-D__STDC_CONSTANT_MACROS"
+    - "-D__STDC_LIMIT_MACROS"
+  Remove:
+    - "-W*"
+
+Index:
+  Background: Skip
+
+Diagnostics:
+  UnusedIncludes: None
+  MissingIncludes: Strict
