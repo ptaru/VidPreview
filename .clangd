@@ -1,5 +1,11 @@
 CompileFlags:
   Add:
+    - "-x"
+    - "objective-c++"
+    - "-std=c++17"
+    - "-stdlib=libc++"
+    - "-fmodules"
+    - "-fcxx-modules"
     - "-isysroot"
     - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
     - "-IVidCore/Frameworks/FFmpeg/include"
@@ -12,6 +18,7 @@ CompileFlags:
     - "-fobjc-arc"
     - "-D__STDC_CONSTANT_MACROS"
     - "-D__STDC_LIMIT_MACROS"
+    - "-Wno-unknown-warning-option"
   Remove:
     - "-W*"
 
