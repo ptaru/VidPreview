@@ -179,6 +179,7 @@ private struct AudioTrackRow: View {
             .font(.system(size: 13, weight: isSelected ? .semibold : .regular))
             .foregroundColor(isSelected ? .primary : .secondary)
             .lineLimit(1)
+            .help(displayTitle)
 
           // Second line: language (if known) • codec • sample rate • channels
           HStack(spacing: 6) {
@@ -229,6 +230,7 @@ private struct SubtitleRow: View {
               .font(.system(size: 13, weight: isSelected ? .semibold : .regular))
               .foregroundColor(isSelected ? .primary : .secondary)
               .lineLimit(1)
+              .help(displayTitle)
 
             // Details
             HStack(spacing: 6) {
