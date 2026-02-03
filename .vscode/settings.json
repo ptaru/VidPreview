@@ -2,5 +2,26 @@
   "[swift]": {
     "editor.defaultFormatter": "sweetpad.sweetpad",
     "editor.formatOnSave": true
+  },
+  "clangd.path": "/usr/bin/clangd",
+  "clangd.arguments": [
+    "--background-index",
+    "--clang-tidy",
+    "--header-insertion=never",
+    "--compile-commands-dir=${workspaceFolder}",
+    "-j=4",
+    "--log=error"
+  ],
+  "[objective-c]": {
+    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+  },
+  "[objective-cpp]": {
+    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+  },
+  "[c]": {
+    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
   }
 }
