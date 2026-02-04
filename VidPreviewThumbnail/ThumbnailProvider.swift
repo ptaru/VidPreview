@@ -58,7 +58,6 @@ class ThumbnailProvider: QLThumbnailProvider {
                 // Use a semaphore to bridge async/sync
                 let semaphore = DispatchSemaphore(value: 0)
                 var extractedCGImage: CGImage?
-                var extractionError: Error?
 
                 Task {
                     // Initialize rendering engine for GPU-accelerated YUV conversion
@@ -126,11 +125,6 @@ class ThumbnailProvider: QLThumbnailProvider {
 
                 // Wait for async frame extraction
                 semaphore.wait()
-
-                if let error = extractionError {
-                    decoder.close()
-                    throw error
-                }
 
                 guard let cgImage = extractedCGImage else {
                     decoder.close()
