@@ -13,9 +13,7 @@ import os
 
 private let logger = Logger(subsystem: "com.vidpreview.quicklook", category: "viewmodel")
 
-private final class TaskBox: @unchecked Sendable {
-  var value: Task<Void, Never>?
-}
+// TaskBox removed as it's no longer needed for internal scrubbing tasks
 
 @Observable
 @MainActor
@@ -111,56 +109,29 @@ class QuickLookViewModel {
 
   // MARK: - Scrubbing
 
-  nonisolated private let scrubTaskBox = TaskBox()
-  nonisolated private let finishingScrubTaskBox = TaskBox()
+  // MARK: - Scrubbing
+
+  // No longer managing manual tasks for scrubbing
 
   func startScrubbing() {
     // Only modify state if we aren't already in a scrubbing lifecycle
     if !isScrubbing && !isFinishingScrub {
       isScrubbing = true
       playbackWasActiveBeforeScrub = isPlaying
-      if isPlaying {
-        pause()
-      }
-    } else if isFinishingScrub {
-      // Re-entering scrubbing while still finishing the previous one.
-      // Cancel the "finish" task to keep it in a scrubbing state.
-      finishingScrubTaskBox.value?.cancel()
-      isFinishingScrub = false
-      isScrubbing = true
-      // playbackWasActiveBeforeScrub is already preserved from the previous start
+      Task { await player.beginScrub() }
     }
   }
 
   func scrub(to time: Double) {
-    // Cancel any pending inaccurate seek
-    scrubTaskBox.value?.cancel()
-
-    scrubTaskBox.value = Task {
-      // Debounce slightly to avoid flooding the decoder during rapid dragging
-      try? await Task.sleep(nanoseconds: 10_000_000)  // 10ms
-      if Task.isCancelled { return }
-
-      await player.seek(to: time, accurate: false)
-    }
+    player.scrub(to: time)
   }
 
   func endScrubbing(at time: Double) {
-    scrubTaskBox.value?.cancel()
-    finishingScrubTaskBox.value?.cancel()
-
     isScrubbing = false
     isFinishingScrub = true
 
-    finishingScrubTaskBox.value = Task {
-      // Perform final accurate seek
-      await player.seek(to: time, accurate: true)
-
-      if Task.isCancelled { return }
-
-      if playbackWasActiveBeforeScrub {
-        play()
-      }
+    Task {
+      await player.endScrub(resumePlayback: playbackWasActiveBeforeScrub)
       isFinishingScrub = false
     }
   }
@@ -169,8 +140,6 @@ class QuickLookViewModel {
 
   nonisolated func cleanupSync() {
     player.cancelAllTasks()
-    scrubTaskBox.value?.cancel()
-    finishingScrubTaskBox.value?.cancel()
     player.closeSync()  // Synchronously release decoder, audio, and renderer cache
   }
 
