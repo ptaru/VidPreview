@@ -2,6 +2,7 @@
 //  QuickLookViewModel.swift
 //  VidPreviewQuickLook
 //
+//
 
 import Foundation
 import Observation
@@ -11,6 +12,10 @@ import VidCore
 import os
 
 private let logger = Logger(subsystem: "com.vidpreview.quicklook", category: "viewmodel")
+
+private final class TaskBox: @unchecked Sendable {
+  var value: Task<Void, Never>?
+}
 
 @Observable
 @MainActor
@@ -106,8 +111,8 @@ class QuickLookViewModel {
 
   // MARK: - Scrubbing
 
-  nonisolated(unsafe) private var scrubTask: Task<Void, Never>?
-  nonisolated(unsafe) private var finishingScrubTask: Task<Void, Never>?
+  nonisolated private let scrubTaskBox = TaskBox()
+  nonisolated private let finishingScrubTaskBox = TaskBox()
 
   func startScrubbing() {
     // Only modify state if we aren't already in a scrubbing lifecycle
@@ -120,7 +125,7 @@ class QuickLookViewModel {
     } else if isFinishingScrub {
       // Re-entering scrubbing while still finishing the previous one.
       // Cancel the "finish" task to keep it in a scrubbing state.
-      finishingScrubTask?.cancel()
+      finishingScrubTaskBox.value?.cancel()
       isFinishingScrub = false
       isScrubbing = true
       // playbackWasActiveBeforeScrub is already preserved from the previous start
@@ -129,9 +134,9 @@ class QuickLookViewModel {
 
   func scrub(to time: Double) {
     // Cancel any pending inaccurate seek
-    scrubTask?.cancel()
+    scrubTaskBox.value?.cancel()
 
-    scrubTask = Task {
+    scrubTaskBox.value = Task {
       // Debounce slightly to avoid flooding the decoder during rapid dragging
       try? await Task.sleep(nanoseconds: 10_000_000)  // 10ms
       if Task.isCancelled { return }
@@ -141,13 +146,13 @@ class QuickLookViewModel {
   }
 
   func endScrubbing(at time: Double) {
-    scrubTask?.cancel()
-    finishingScrubTask?.cancel()
+    scrubTaskBox.value?.cancel()
+    finishingScrubTaskBox.value?.cancel()
 
     isScrubbing = false
     isFinishingScrub = true
 
-    finishingScrubTask = Task {
+    finishingScrubTaskBox.value = Task {
       // Perform final accurate seek
       await player.seek(to: time, accurate: true)
 
@@ -164,8 +169,8 @@ class QuickLookViewModel {
 
   nonisolated func cleanupSync() {
     player.cancelAllTasks()
-    scrubTask?.cancel()
-    finishingScrubTask?.cancel()
+    scrubTaskBox.value?.cancel()
+    finishingScrubTaskBox.value?.cancel()
     player.closeSync()  // Synchronously release decoder, audio, and renderer cache
   }
 
