@@ -19,6 +19,7 @@
 		58FED0852EF6CDCF001AB3DA /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 58FED0842EF6CDCF001AB3DA /* AppIcon.icon */; };
 		58FED0862EF6CDCF001AB3DA /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 58FED0842EF6CDCF001AB3DA /* AppIcon.icon */; };
 		58FED0872EF6CDCF001AB3DA /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 58FED0842EF6CDCF001AB3DA /* AppIcon.icon */; };
+		DAC2D9D33FB249D8BF7CEEAD /* VidCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F669A92EF6C847003BA262 /* VidCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,13 @@
 			remoteInfo = VidCore;
 		};
 		58F669DC2EF6C924003BA262 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 58A458F32EF5C76D003F504E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 58F669A82EF6C847003BA262;
+			remoteInfo = VidCore;
+		};
+		7A2E7501C0B24942961E3826 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 58A458F32EF5C76D003F504E /* Project object */;
 			proxyType = 1;
@@ -97,6 +105,7 @@
 		58A458FB2EF5C76D003F504E /* VidPreview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VidPreview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F669A92EF6C847003BA262 /* VidCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VidCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58FED0842EF6CDCF001AB3DA /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
+		94BE5E9B8EB34320A888D854 /* VidCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VidCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -113,6 +122,22 @@
 				Info.plist,
 			);
 			target = 58455B1A2F16DC4500AA5E23 /* VidPreviewThumbnail */;
+		};
+		58850A0B2F368898005ECAAA /* Exceptions for "VidCore" folder in "VidCoreTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				VidCoreTests/BuffersTests.swift,
+				VidCoreTests/ColorParsingTests.swift,
+				VidCoreTests/PacketQueueTests.swift,
+				VidCoreTests/PlaybackStateTests.swift,
+				VidCoreTests/SubtitleFrameTests.swift,
+				VidCoreTests/SubtitleParserTests.swift,
+				VidCoreTests/TrackInfoTests.swift,
+				VidCoreTests/VideoFrameTests.swift,
+				VidCoreTests/VideoInfoTests.swift,
+				VidCoreTests/VideoPlayerErrorTests.swift,
+			);
+			target = 85AE1BE77BD74B8B938854E8 /* VidCoreTests */;
 		};
 		58A459072EF5C76E003F504E /* Exceptions for "VidPreview" folder in "VidPreview" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -140,6 +165,16 @@
 				Scripts/dovi_check.swift,
 				Scripts/list_attachments.swift,
 				Scripts/subtitle_parser.swift,
+				VidCoreTests/BuffersTests.swift,
+				VidCoreTests/ColorParsingTests.swift,
+				VidCoreTests/PacketQueueTests.swift,
+				VidCoreTests/PlaybackStateTests.swift,
+				VidCoreTests/SubtitleFrameTests.swift,
+				VidCoreTests/SubtitleParserTests.swift,
+				VidCoreTests/TrackInfoTests.swift,
+				VidCoreTests/VideoFrameTests.swift,
+				VidCoreTests/VideoInfoTests.swift,
+				VidCoreTests/VideoPlayerErrorTests.swift,
 			);
 			publicHeaders = (
 				Decoding/FFmpegDecoder.h,
@@ -180,13 +215,27 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				58F669DF2EF6C9E1003BA262 /* Exceptions for "VidCore" folder in "VidCore" target */,
+				58850A0B2F368898005ECAAA /* Exceptions for "VidCore" folder in "VidCoreTests" target */,
 			);
 			path = VidCore;
+			sourceTree = "<group>";
+		};
+		5CB37840A3CC48D1962B3D61 /* VidCore/VidCoreTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = VidCore/VidCoreTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		11E34A1550584F5EB77607A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAC2D9D33FB249D8BF7CEEAD /* VidCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		581739672EF6B9C100894B31 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -239,6 +288,7 @@
 				58A458FD2EF5C76D003F504E /* VidPreview */,
 				5817396C2EF6B9C100894B31 /* VidPreviewQuickLook */,
 				58F669AA2EF6C847003BA262 /* VidCore */,
+				5CB37840A3CC48D1962B3D61 /* VidCore/VidCoreTests */,
 				58455B1E2F16DC4500AA5E23 /* VidPreviewThumbnail */,
 				581739522EF6B98F00894B31 /* Frameworks */,
 				58A458FC2EF5C76D003F504E /* Products */,
@@ -252,6 +302,7 @@
 				5817396A2EF6B9C100894B31 /* VidPreviewQuickLook.appex */,
 				58F669A92EF6C847003BA262 /* VidCore.framework */,
 				58455B1B2F16DC4500AA5E23 /* VidPreviewThumbnail.appex */,
+				94BE5E9B8EB34320A888D854 /* VidCoreTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -365,6 +416,29 @@
 			productReference = 58F669A92EF6C847003BA262 /* VidCore.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		85AE1BE77BD74B8B938854E8 /* VidCoreTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F7A924AD1C6148B9A3E7927B /* Build configuration list for PBXNativeTarget "VidCoreTests" */;
+			buildPhases = (
+				F1EF1D4530B44BA88D4FB210 /* Sources */,
+				11E34A1550584F5EB77607A6 /* Frameworks */,
+				B28B851619864953BA8B6972 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				275B658B5DAD4B62B4C536A5 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				5CB37840A3CC48D1962B3D61 /* VidCore/VidCoreTests */,
+			);
+			name = VidCoreTests;
+			packageProductDependencies = (
+			);
+			productName = VidCoreTests;
+			productReference = 94BE5E9B8EB34320A888D854 /* VidCoreTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -387,6 +461,9 @@
 					58F669A82EF6C847003BA262 = {
 						CreatedOnToolsVersion = 26.2;
 					};
+					85AE1BE77BD74B8B938854E8 = {
+						CreatedOnToolsVersion = 26.2;
+					};
 				};
 			};
 			buildConfigurationList = 58A458F62EF5C76D003F504E /* Build configuration list for PBXProject "VidPreview" */;
@@ -407,6 +484,7 @@
 				581739692EF6B9C100894B31 /* VidPreviewQuickLook */,
 				58F669A82EF6C847003BA262 /* VidCore */,
 				58455B1A2F16DC4500AA5E23 /* VidPreviewThumbnail */,
+				85AE1BE77BD74B8B938854E8 /* VidCoreTests */,
 			);
 		};
 /* End PBXProject section */
@@ -443,6 +521,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B28B851619864953BA8B6972 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -474,9 +559,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F1EF1D4530B44BA88D4FB210 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		275B658B5DAD4B62B4C536A5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 58F669A82EF6C847003BA262 /* VidCore */;
+			targetProxy = 7A2E7501C0B24942961E3826 /* PBXContainerItemProxy */;
+		};
 		581739762EF6B9C100894B31 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 581739692EF6B9C100894B31 /* VidPreviewQuickLook */;
@@ -500,6 +597,32 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		14FAC1CFD22C4F09909D8ACD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CM6PR6R3U2;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.tarun.VidCoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "";
+			};
+			name = Debug;
+		};
 		581739792EF6B9C100894B31 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -988,6 +1111,32 @@
 			};
 			name = Release;
 		};
+		CEA9418760D44E63951AF31F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CM6PR6R3U2;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.tarun.VidCoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1032,6 +1181,15 @@
 			buildConfigurations = (
 				58F669B42EF6C847003BA262 /* Debug */,
 				58F669B52EF6C847003BA262 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F7A924AD1C6148B9A3E7927B /* Build configuration list for PBXNativeTarget "VidCoreTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14FAC1CFD22C4F09909D8ACD /* Debug */,
+				CEA9418760D44E63951AF31F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

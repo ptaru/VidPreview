@@ -104,6 +104,7 @@ struct SettingsView: View {
 
     panel.begin { response in
       if response == .OK, let url = panel.url {
+        BookmarkManager.shared.saveBookmark(for: url)
         openWindow(value: url)
       }
     }

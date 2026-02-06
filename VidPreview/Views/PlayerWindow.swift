@@ -2,8 +2,6 @@
 //  PlayerWindow.swift
 //  VidPreview
 //
-//  Created by User on 2026-02-06.
-//
 
 import SwiftUI
 import VidPreviewQuickLook
@@ -11,6 +9,7 @@ import VidPreviewQuickLook
 struct PlayerWindow: View {
   let url: URL
   @State private var viewModel: QuickLookViewModel?
+  @State private var accessedURL: URL?
 
   var body: some View {
     Group {
@@ -21,8 +20,17 @@ struct PlayerWindow: View {
       }
     }
     .task {
+      // Try to resolve bookmark permissions first
+      var targetURL = url
+      if let resolved = BookmarkManager.shared.resolveBookmark(for: url) {
+        if resolved.startAccessingSecurityScopedResource() {
+          targetURL = resolved
+          self.accessedURL = resolved
+        }
+      }
+
       // Initialize VM and load video
-      let vm = QuickLookViewModel(url: url)
+      let vm = QuickLookViewModel(url: targetURL)
       self.viewModel = vm
       await vm.loadVideo()
       vm.play()
@@ -30,6 +38,10 @@ struct PlayerWindow: View {
     .onDisappear {
       // Cleanup when window closes
       viewModel?.cleanupSync()
+      if let accessedURL {
+        accessedURL.stopAccessingSecurityScopedResource()
+        self.accessedURL = nil
+      }
     }
     .frame(minWidth: 400, minHeight: 300)
   }

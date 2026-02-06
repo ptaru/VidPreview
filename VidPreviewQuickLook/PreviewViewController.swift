@@ -75,6 +75,13 @@ class PreviewViewController: NSViewController, QLPreviewingController {
         // Reset state for new file
         hasInitialAutoplayOccurred = false
 
+        // Clean up any previous preview before creating a new one
+        if let existingHostingView = hostingView {
+            existingHostingView.removeFromSuperview()
+            hostingView = nil
+        }
+        viewModel?.cleanupSync()
+
         let vm = QuickLookViewModel(url: url)
         self.viewModel = vm
 
@@ -153,6 +160,10 @@ class PreviewViewController: NSViewController, QLPreviewingController {
     }
 
     private func becameActivePreview() {
+        if hasCleanedUp {
+            PreviewRegistry.shared.register(self)
+            hasCleanedUp = false
+        }
         PreviewRegistry.shared.pauseAllExcept(self)
 
         // Only resume if we should be playing AND the user hasn't manually paused

@@ -109,21 +109,17 @@ class QuickLookViewModel {
 
   // MARK: - Scrubbing
 
-  // MARK: - Scrubbing
-
-  // No longer managing manual tasks for scrubbing
-
   func startScrubbing() {
     // Only modify state if we aren't already in a scrubbing lifecycle
     if !isScrubbing && !isFinishingScrub {
       isScrubbing = true
       playbackWasActiveBeforeScrub = isPlaying
-      player.beginScrub()
+      Task { await player.beginScrub() }
     }
   }
 
   func scrub(to time: Double) {
-    player.scrub(to: time)
+    Task { await player.scrub(to: time) }
   }
 
   func endScrubbing(at time: Double) {
@@ -131,7 +127,7 @@ class QuickLookViewModel {
     isFinishingScrub = true
 
     Task {
-      player.scrub(to: time)
+      await player.scrub(to: time)
       await player.endScrub(resumePlayback: playbackWasActiveBeforeScrub)
       isFinishingScrub = false
     }

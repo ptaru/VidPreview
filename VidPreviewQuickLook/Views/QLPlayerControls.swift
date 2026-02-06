@@ -79,6 +79,7 @@ struct QLPlayerControls: View {
   }
 
   private func formatTime(_ seconds: Double, duration: Double) -> String {
+    guard seconds.isFinite, duration.isFinite else { return "--:--" }
     let totalSeconds = Int(max(0, seconds))
     let hours = totalSeconds / 3600
     let minutes = (totalSeconds % 3600) / 60
