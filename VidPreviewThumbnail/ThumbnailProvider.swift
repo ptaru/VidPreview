@@ -98,8 +98,6 @@ class ThumbnailProvider: QLThumbnailProvider {
               let frames = await decoder.decodePacket(packet)
               for frame in frames {
                 if case .video(let videoFrame) = frame {
-                  // Use VidCore's Metal-based rendering to convert to CGImage
-                  // This handles all pixel formats (I420, NV12, P010, etc.)
                   // Use System Renderer logic to convert to CGImage
                   // This handles all pixel formats and Dolby Vision
                   extractedCGImage = AVSystemVideoRenderer.createCGImage(from: videoFrame)

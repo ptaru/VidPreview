@@ -43,7 +43,6 @@ struct QLPlayerControls: View {
           onEditingChanged: { editing in
             if editing {
               viewModel.startScrubbing()
-              viewModel.scrub(to: seekPosition)
             } else {
               viewModel.endScrubbing(at: seekPosition)
             }

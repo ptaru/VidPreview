@@ -118,7 +118,7 @@ class QuickLookViewModel {
     if !isScrubbing && !isFinishingScrub {
       isScrubbing = true
       playbackWasActiveBeforeScrub = isPlaying
-      Task { await player.beginScrub() }
+      player.beginScrub()
     }
   }
 
@@ -131,6 +131,7 @@ class QuickLookViewModel {
     isFinishingScrub = true
 
     Task {
+      player.scrub(to: time)
       await player.endScrub(resumePlayback: playbackWasActiveBeforeScrub)
       isFinishingScrub = false
     }
