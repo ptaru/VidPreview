@@ -121,6 +121,18 @@
 			);
 			target = 58A458FA2EF5C76D003F504E /* VidPreview */;
 		};
+		58E9AAE82F3624B200BB5D69 /* Exceptions for "VidPreviewQuickLook" folder in "VidPreview" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Extensions/View+GlassEffect.swift",
+				ViewModels/QuickLookViewModel.swift,
+				Views/QLPlayerControls.swift,
+				Views/QLTrackSelector.swift,
+				Views/QLVolumeControl.swift,
+				Views/QuickLookPlayerView.swift,
+			);
+			target = 58A458FA2EF5C76D003F504E /* VidPreview */;
+		};
 		58F669DF2EF6C9E1003BA262 /* Exceptions for "VidCore" folder in "VidCore" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -142,6 +154,7 @@
 		5817396C2EF6B9C100894B31 /* VidPreviewQuickLook */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
+				58E9AAE82F3624B200BB5D69 /* Exceptions for "VidPreviewQuickLook" folder in "VidPreview" target */,
 				5817397B2EF6B9C100894B31 /* Exceptions for "VidPreviewQuickLook" folder in "VidPreviewQuickLook" target */,
 			);
 			path = VidPreviewQuickLook;

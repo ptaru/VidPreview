@@ -6,96 +6,125 @@
 //
 
 import SwiftUI
+import UniformTypeIdentifiers
 
 struct SettingsView: View {
-    var body: some View {
-        VStack(spacing: 24) {
-            // App Icon and Title
-            VStack(spacing: 12) {
-                Image(systemName: "eye.fill")
-                    .font(.system(size: 64))
-                    .foregroundStyle(.blue)
-                
-                Text("VidPreview")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                
-                Text("QuickLook Extension for Video Files")
-                    .font(.title3)
-                    .foregroundStyle(.secondary)
-            }
-            .padding(.top, 20)
-            
-            Divider()
-                .padding(.horizontal, 40)
-            
-            // Instructions
-            VStack(alignment: .leading, spacing: 16) {
-                Text("How to Use")
-                    .font(.headline)
-                
-                HStack(alignment: .top, spacing: 12) {
-                    Image(systemName: "1.circle.fill")
-                        .foregroundStyle(.blue)
-                    Text("Select a video file in Finder")
-                }
-                
-                HStack(alignment: .top, spacing: 12) {
-                    Image(systemName: "2.circle.fill")
-                        .foregroundStyle(.blue)
-                    Text("Press **Space** to preview with QuickLook")
-                }
-                
-                HStack(alignment: .top, spacing: 12) {
-                    Image(systemName: "3.circle.fill")
-                        .foregroundStyle(.blue)
-                    Text("Enjoy full video playback in the preview!")
-                }
-            }
-            .frame(maxWidth: 300, alignment: .leading)
-            
-            Divider()
-                .padding(.horizontal, 40)
-            
-            // Supported Formats
-            VStack(spacing: 12) {
-                Text("Supported Formats")
-                    .font(.headline)
-                
-                HStack(spacing: 16) {
-                    FormatBadge(format: "MKV")
-                    FormatBadge(format: "WebM")
-                    FormatBadge(format: "AVI")
-                    FormatBadge(format: "Ogg")
-                }
-            }
-            
-            // Footer
-            Text("Made by Tarun")
-                .font(.caption)
-                .foregroundStyle(.tertiary)
-                .padding(.bottom, 16)
+  @Environment(\.openWindow) private var openWindow
+
+  var body: some View {
+    VStack(spacing: 24) {
+      // App Icon and Title
+      VStack(spacing: 12) {
+        Image(systemName: "eye.fill")
+          .font(.system(size: 64))
+          .foregroundStyle(.blue)
+
+        Text("VidPreview")
+          .font(.largeTitle)
+          .fontWeight(.bold)
+
+        Text("QuickLook Extension for Video Files")
+          .font(.title3)
+          .foregroundStyle(.secondary)
+      }
+      .padding(.top, 20)
+
+      Divider()
+        .padding(.horizontal, 40)
+
+      // Instructions
+      VStack(alignment: .leading, spacing: 16) {
+        Text("How to Use")
+          .font(.headline)
+
+        HStack(alignment: .top, spacing: 12) {
+          Image(systemName: "1.circle.fill")
+            .foregroundStyle(.blue)
+          Text("Select a video file in Finder")
         }
-        .frame(minWidth: 400, minHeight: 450)
-        .background(Color(nsColor: .windowBackgroundColor))
+
+        HStack(alignment: .top, spacing: 12) {
+          Image(systemName: "2.circle.fill")
+            .foregroundStyle(.blue)
+          Text("Press **Space** to preview with QuickLook")
+        }
+
+        HStack(alignment: .top, spacing: 12) {
+          Image(systemName: "3.circle.fill")
+            .foregroundStyle(.blue)
+          Text("Enjoy full video playback in the preview!")
+        }
+      }
+      .frame(maxWidth: 300, alignment: .leading)
+
+      Divider()
+        .padding(.horizontal, 40)
+
+      // Supported Formats
+      VStack(spacing: 12) {
+        Text("Supported Formats")
+          .font(.headline)
+
+        HStack(spacing: 16) {
+          FormatBadge(format: "MKV")
+          FormatBadge(format: "WebM")
+          FormatBadge(format: "AVI")
+          FormatBadge(format: "Ogg")
+        }
+      }
+
+      Button {
+        openFile()
+      } label: {
+        Label("Open File...", systemImage: "doc.badge.plus")
+          .font(.title2)
+          .padding(.horizontal, 16)
+          .padding(.vertical, 8)
+      }
+      .buttonStyle(.borderedProminent)
+      .controlSize(.large)
+      .keyboardShortcut("o", modifiers: .command)
+
+      // Footer
+      Text("Made by Tarun")
+        .font(.caption)
+        .foregroundStyle(.tertiary)
+        .padding(.bottom, 16)
     }
+    .frame(minWidth: 400, minHeight: 550)
+    .background(Color(nsColor: .windowBackgroundColor))
+  }
+
+  private func openFile() {
+    let panel = NSOpenPanel()
+    panel.allowsMultipleSelection = false
+    panel.canChooseDirectories = false
+    panel.canChooseFiles = true
+    panel.allowedContentTypes = [.movie, .video, .audiovisualContent]
+
+    panel.begin { response in
+      if response == .OK, let url = panel.url {
+        openWindow(value: url)
+      }
+    }
+  }
 }
 
 struct FormatBadge: View {
-    let format: String
-    
-    var body: some View {
-        Text(format)
-            .font(.caption)
-            .fontWeight(.medium)
-            .padding(.horizontal, 10)
-            .padding(.vertical, 4)
-            .background(.blue.opacity(0.1))
-            .foregroundStyle(.blue)
-            .clipShape(RoundedRectangle(cornerRadius: 6))
-    }
+  let format: String
+
+  var body: some View {
+    Text(format)
+      .font(.caption)
+      .fontWeight(.medium)
+      .padding(.horizontal, 10)
+      .padding(.vertical, 4)
+      .background(.blue.opacity(0.1))
+      .foregroundStyle(.blue)
+      .clipShape(RoundedRectangle(cornerRadius: 6))
+  }
 }
 
 #Preview {
-    SettingsView()
+  SettingsView()
 }
