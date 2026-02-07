@@ -10,9 +10,6 @@ import Cocoa
 import Quartz
 import SwiftUI
 import VidCore
-import os.log
-
-private let logger = Logger(subsystem: "com.vidpreview.quicklook", category: "focus")
 
 class PreviewViewController: NSViewController, QLPreviewingController {
 
@@ -57,8 +54,6 @@ class PreviewViewController: NSViewController, QLPreviewingController {
         // If we haven't autoplayed yet, check if we can now
         if !hasInitialAutoplayOccurred, let vm = viewModel, !vm.isPlaying {
             if isViewportLargeEnough() {
-                logger.debug(
-                    "[PreviewViewController] Viewport became large enough, starting playback")
                 hasInitialAutoplayOccurred = true
                 vm.play()
             }
@@ -69,8 +64,6 @@ class PreviewViewController: NSViewController, QLPreviewingController {
 
     func preparePreviewOfFile(at url: URL) async throws {
         currentFileURL = url
-        logger.debug(
-            "[PreviewViewController] Preparing preview: \(url.lastPathComponent, privacy: .public)")
 
         // Reset state for new file
         hasInitialAutoplayOccurred = false
@@ -112,10 +105,6 @@ class PreviewViewController: NSViewController, QLPreviewingController {
             if isViewportLargeEnough() {
                 hasInitialAutoplayOccurred = true
                 vm.play()
-            } else {
-                logger.debug(
-                    "[PreviewViewController] Viewport too small (\(self.view.bounds.width)x\(self.view.bounds.height)), deferring playback"
-                )
             }
         }
     }
@@ -124,7 +113,6 @@ class PreviewViewController: NSViewController, QLPreviewingController {
 
     private func setupOcclusionObserver() {
         guard let window = view.window else {
-            logger.warning("No window available for occlusion observation")
             return
         }
 
@@ -169,12 +157,7 @@ class PreviewViewController: NSViewController, QLPreviewingController {
         // Only resume if we should be playing AND the user hasn't manually paused
         if let vm = viewModel, !vm.isPlaying, !vm.userManuallyPaused {
             if isViewportLargeEnough() {
-                logger.debug(
-                    "[PreviewViewController] Resuming playback: \(self.currentFileURL?.lastPathComponent ?? "unknown", privacy: .public)"
-                )
                 vm.play()
-            } else {
-                logger.debug("[PreviewViewController] Skipping resume - viewport too small")
             }
         }
     }
@@ -182,10 +165,6 @@ class PreviewViewController: NSViewController, QLPreviewingController {
     private func performEarlyCleanup() {
         guard !hasCleanedUp else { return }
         hasCleanedUp = true
-
-        logger.debug(
-            "[PreviewViewController] Early cleanup: \(self.currentFileURL?.lastPathComponent ?? "unknown", privacy: .public)"
-        )
         PreviewRegistry.shared.unregister(self)
         viewModel?.pause()
     }

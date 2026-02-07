@@ -147,7 +147,6 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				VidCoreTests/BuffersTests.swift,
-				VidCoreTests/ColorParsingTests.swift,
 				VidCoreTests/PacketQueueTests.swift,
 				VidCoreTests/PlaybackStateTests.swift,
 				VidCoreTests/SubtitleFrameTests.swift,
@@ -181,7 +180,6 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				VidCoreTests/BuffersTests.swift,
-				VidCoreTests/ColorParsingTests.swift,
 				VidCoreTests/PacketQueueTests.swift,
 				VidCoreTests/PlaybackStateTests.swift,
 				VidCoreTests/SubtitleFrameTests.swift,
@@ -191,8 +189,8 @@
 				VidCoreTests/VideoPlayerErrorTests.swift,
 			);
 			publicHeaders = (
-				Decoding/FFmpegDecoder.h,
-				Demuxing/FFmpegDemuxer.h,
+				Media/Decoding/FFmpegDecoder.h,
+				Media/Demuxing/FFmpegDemuxer.h,
 				Subtitles/LibASSRenderer.h,
 				VidCore.h,
 			);
@@ -216,11 +214,6 @@
 				58455B282F16DC4500AA5E23 /* Exceptions for "VidPreviewThumbnail" folder in "VidPreviewThumbnail" target */,
 			);
 			path = VidPreviewThumbnail;
-			sourceTree = "<group>";
-		};
-		5887669E2F36AB7E00B9506B /* VidCoreTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = VidCoreTests;
 			sourceTree = "<group>";
 		};
 		58A458FD2EF5C76D003F504E /* VidPreview */ = {
@@ -305,7 +298,6 @@
 				5817396C2EF6B9C100894B31 /* VidPreviewQuickLook */,
 				58F669AA2EF6C847003BA262 /* VidCore */,
 				58455B1E2F16DC4500AA5E23 /* VidPreviewThumbnail */,
-				5887669E2F36AB7E00B9506B /* VidCoreTests */,
 				581739522EF6B98F00894B31 /* Frameworks */,
 				58A458FC2EF5C76D003F504E /* Products */,
 			);
@@ -396,9 +388,6 @@
 			);
 			dependencies = (
 				588766A32F36AB7E00B9506B /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				5887669E2F36AB7E00B9506B /* VidCoreTests */,
 			);
 			name = VidCoreTests;
 			packageProductDependencies = (

@@ -9,9 +9,6 @@ import Observation
 import Quartz
 import SwiftUI
 import VidCore
-import os
-
-private let logger = Logger(subsystem: "com.vidpreview.quicklook", category: "viewmodel")
 
 // TaskBox removed as it's no longer needed for internal scrubbing tasks
 
@@ -67,7 +64,6 @@ class QuickLookViewModel {
 
   init(url: URL) {
     self.url = url
-    logger.debug("[QuickLookViewModel] Created for: \(url.lastPathComponent)")
   }
 
   // MARK: - Video Loading
@@ -75,11 +71,7 @@ class QuickLookViewModel {
   func loadVideo() async {
     do {
       try await player.load(url: url)
-      logger.info(
-        "[QuickLookViewModel] Video loaded: \(self.videoInfo?.width ?? 0)x\(self.videoInfo?.height ?? 0)"
-      )
     } catch {
-      logger.error("[QuickLookViewModel] Failed to load video: \(error.localizedDescription)")
     }
   }
 
@@ -141,7 +133,6 @@ class QuickLookViewModel {
   }
 
   nonisolated deinit {
-    print("[QuickLookViewModel] DEINIT - deallocating")
     cleanupSync()
   }
 
