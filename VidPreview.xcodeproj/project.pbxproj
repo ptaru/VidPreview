@@ -7,24 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		580020422F37B53B00BC4CC1 /* VidCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5800203F2F37B53B00BC4CC1 /* VidCore.framework */; };
+		580020432F37B53B00BC4CC1 /* VidCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5800203F2F37B53B00BC4CC1 /* VidCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		580020442F37B54000BC4CC1 /* VidCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5800203F2F37B53B00BC4CC1 /* VidCore.framework */; };
+		580020452F37B54000BC4CC1 /* VidCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5800203F2F37B53B00BC4CC1 /* VidCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		580020462F37B54400BC4CC1 /* VidCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5800203F2F37B53B00BC4CC1 /* VidCore.framework */; };
+		580020472F37B54400BC4CC1 /* VidCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5800203F2F37B53B00BC4CC1 /* VidCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5817396B2EF6B9C100894B31 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581739532EF6B98F00894B31 /* Quartz.framework */; };
 		581739772EF6B9C100894B31 /* VidPreviewQuickLook.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5817396A2EF6B9C100894B31 /* VidPreviewQuickLook.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		58455B1C2F16DC4500AA5E23 /* QuickLookThumbnailing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58455B002F16D87400AA5E23 /* QuickLookThumbnailing.framework */; };
 		58455B1D2F16DC4500AA5E23 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581739532EF6B98F00894B31 /* Quartz.framework */; };
 		58455B242F16DC4500AA5E23 /* VidPreviewThumbnail.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 58455B1B2F16DC4500AA5E23 /* VidPreviewThumbnail.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		586CB66A2F374F12003E7C00 /* VidCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F669A92EF6C847003BA262 /* VidCore.framework */; };
-		586CB66B2F374F12003E7C00 /* VidCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 58F669A92EF6C847003BA262 /* VidCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		588766A12F36AB7E00B9506B /* VidCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F669A92EF6C847003BA262 /* VidCore.framework */; };
-		58AC747B2F16E29D00BF8BAF /* VidCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F669A92EF6C847003BA262 /* VidCore.framework */; };
-		58AC747C2F16E29D00BF8BAF /* VidCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 58F669A92EF6C847003BA262 /* VidCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		58F669DA2EF6C924003BA262 /* VidCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F669A92EF6C847003BA262 /* VidCore.framework */; };
-		58F669DB2EF6C924003BA262 /* VidCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 58F669A92EF6C847003BA262 /* VidCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		58FED0852EF6CDCF001AB3DA /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 58FED0842EF6CDCF001AB3DA /* AppIcon.icon */; };
-		58FED0862EF6CDCF001AB3DA /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 58FED0842EF6CDCF001AB3DA /* AppIcon.icon */; };
 		58FED0872EF6CDCF001AB3DA /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 58FED0842EF6CDCF001AB3DA /* AppIcon.icon */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5800203E2F37B53B00BC4CC1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 58AB7A4E2F37B5030058B125 /* VidCore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 585D84852F37AEE30082F07B;
+			remoteInfo = VidCore;
+		};
 		581739752EF6B9C100894B31 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 58A458F32EF5C76D003F504E /* Project object */;
@@ -38,34 +43,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 58455B1A2F16DC4500AA5E23;
 			remoteInfo = VidPreviewThumbnail;
-		};
-		586CB66C2F374F12003E7C00 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 58A458F32EF5C76D003F504E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 58F669A82EF6C847003BA262;
-			remoteInfo = VidCore;
-		};
-		588766A22F36AB7E00B9506B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 58A458F32EF5C76D003F504E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 58F669A82EF6C847003BA262;
-			remoteInfo = VidCore;
-		};
-		58AC747D2F16E29D00BF8BAF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 58A458F32EF5C76D003F504E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 58F669A82EF6C847003BA262;
-			remoteInfo = VidCore;
-		};
-		58F669DC2EF6C924003BA262 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 58A458F32EF5C76D003F504E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 58F669A82EF6C847003BA262;
-			remoteInfo = VidCore;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -88,7 +65,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				586CB66B2F374F12003E7C00 /* VidCore.framework in Embed Frameworks */,
+				580020432F37B53B00BC4CC1 /* VidCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -99,7 +76,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				58AC747C2F16E29D00BF8BAF /* VidCore.framework in Embed Frameworks */,
+				580020472F37B54400BC4CC1 /* VidCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -110,7 +87,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				58F669DB2EF6C924003BA262 /* VidCore.framework in Embed Frameworks */,
+				580020452F37B54000BC4CC1 /* VidCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -122,9 +99,8 @@
 		5817396A2EF6B9C100894B31 /* VidPreviewQuickLook.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VidPreviewQuickLook.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		58455B002F16D87400AA5E23 /* QuickLookThumbnailing.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLookThumbnailing.framework; path = System/Library/Frameworks/QuickLookThumbnailing.framework; sourceTree = SDKROOT; };
 		58455B1B2F16DC4500AA5E23 /* VidPreviewThumbnail.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VidPreviewThumbnail.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		5887669D2F36AB7E00B9506B /* VidCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VidCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A458FB2EF5C76D003F504E /* VidPreview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VidPreview.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		58F669A92EF6C847003BA262 /* VidCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VidCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		58AB7A4E2F37B5030058B125 /* VidCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VidCore.xcodeproj; path = ../VidCore/VidCore.xcodeproj; sourceTree = "<group>"; };
 		58FED0842EF6CDCF001AB3DA /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,20 +118,6 @@
 				Info.plist,
 			);
 			target = 58455B1A2F16DC4500AA5E23 /* VidPreviewThumbnail */;
-		};
-		588766B12F36AB9200B9506B /* Exceptions for "VidCore" folder in "VidCoreTests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				VidCoreTests/BuffersTests.swift,
-				VidCoreTests/PacketQueueTests.swift,
-				VidCoreTests/PlaybackStateTests.swift,
-				VidCoreTests/SubtitleFrameTests.swift,
-				VidCoreTests/TrackInfoTests.swift,
-				VidCoreTests/VideoFrameTests.swift,
-				VidCoreTests/VideoInfoTests.swift,
-				VidCoreTests/VideoPlayerErrorTests.swift,
-			);
-			target = 5887669C2F36AB7E00B9506B /* VidCoreTests */;
 		};
 		58A459072EF5C76E003F504E /* Exceptions for "VidPreview" folder in "VidPreview" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -175,26 +137,6 @@
 				Views/QuickLookPlayerView.swift,
 			);
 			target = 58A458FA2EF5C76D003F504E /* VidPreview */;
-		};
-		58F669DF2EF6C9E1003BA262 /* Exceptions for "VidCore" folder in "VidCore" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				VidCoreTests/BuffersTests.swift,
-				VidCoreTests/PacketQueueTests.swift,
-				VidCoreTests/PlaybackStateTests.swift,
-				VidCoreTests/SubtitleFrameTests.swift,
-				VidCoreTests/TrackInfoTests.swift,
-				VidCoreTests/VideoFrameTests.swift,
-				VidCoreTests/VideoInfoTests.swift,
-				VidCoreTests/VideoPlayerErrorTests.swift,
-			);
-			publicHeaders = (
-				Media/Decoding/FFmpegDecoder.h,
-				Media/Demuxing/FFmpegDemuxer.h,
-				Subtitles/LibASSRenderer.h,
-				VidCore.h,
-			);
-			target = 58F669A82EF6C847003BA262 /* VidCore */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -224,15 +166,6 @@
 			path = VidPreview;
 			sourceTree = "<group>";
 		};
-		58F669AA2EF6C847003BA262 /* VidCore */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				58F669DF2EF6C9E1003BA262 /* Exceptions for "VidCore" folder in "VidCore" target */,
-				588766B12F36AB9200B9506B /* Exceptions for "VidCore" folder in "VidCoreTests" target */,
-			);
-			path = VidCore;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,8 +173,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58F669DA2EF6C924003BA262 /* VidCore.framework in Frameworks */,
 				5817396B2EF6B9C100894B31 /* Quartz.framework in Frameworks */,
+				580020442F37B54000BC4CC1 /* VidCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,15 +184,7 @@
 			files = (
 				58455B1C2F16DC4500AA5E23 /* QuickLookThumbnailing.framework in Frameworks */,
 				58455B1D2F16DC4500AA5E23 /* Quartz.framework in Frameworks */,
-				58AC747B2F16E29D00BF8BAF /* VidCore.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5887669A2F36AB7E00B9506B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				588766A12F36AB7E00B9506B /* VidCore.framework in Frameworks */,
+				580020462F37B54400BC4CC1 /* VidCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,14 +192,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				586CB66A2F374F12003E7C00 /* VidCore.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		58F669A62EF6C847003BA262 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				580020422F37B53B00BC4CC1 /* VidCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +202,7 @@
 		581739522EF6B98F00894B31 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58AB7A4E2F37B5030058B125 /* VidCore.xcodeproj */,
 				581739532EF6B98F00894B31 /* Quartz.framework */,
 				58455B002F16D87400AA5E23 /* QuickLookThumbnailing.framework */,
 			);
@@ -296,7 +215,6 @@
 				58FED0842EF6CDCF001AB3DA /* AppIcon.icon */,
 				58A458FD2EF5C76D003F504E /* VidPreview */,
 				5817396C2EF6B9C100894B31 /* VidPreviewQuickLook */,
-				58F669AA2EF6C847003BA262 /* VidCore */,
 				58455B1E2F16DC4500AA5E23 /* VidPreviewThumbnail */,
 				581739522EF6B98F00894B31 /* Frameworks */,
 				58A458FC2EF5C76D003F504E /* Products */,
@@ -308,24 +226,20 @@
 			children = (
 				58A458FB2EF5C76D003F504E /* VidPreview.app */,
 				5817396A2EF6B9C100894B31 /* VidPreviewQuickLook.appex */,
-				58F669A92EF6C847003BA262 /* VidCore.framework */,
 				58455B1B2F16DC4500AA5E23 /* VidPreviewThumbnail.appex */,
-				5887669D2F36AB7E00B9506B /* VidCoreTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		58AB7A4F2F37B5030058B125 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5800203F2F37B53B00BC4CC1 /* VidCore.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
-
-/* Begin PBXHeadersBuildPhase section */
-		58F669A42EF6C847003BA262 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		581739692EF6B9C100894B31 /* VidPreviewQuickLook */ = {
@@ -340,7 +254,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				58F669DD2EF6C924003BA262 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				5817396C2EF6B9C100894B31 /* VidPreviewQuickLook */,
@@ -364,7 +277,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				58AC747E2F16E29D00BF8BAF /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				58455B1E2F16DC4500AA5E23 /* VidPreviewThumbnail */,
@@ -375,26 +287,6 @@
 			productName = VidPreviewThumbnail;
 			productReference = 58455B1B2F16DC4500AA5E23 /* VidPreviewThumbnail.appex */;
 			productType = "com.apple.product-type.app-extension";
-		};
-		5887669C2F36AB7E00B9506B /* VidCoreTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 588766A62F36AB7E00B9506B /* Build configuration list for PBXNativeTarget "VidCoreTests" */;
-			buildPhases = (
-				588766992F36AB7E00B9506B /* Sources */,
-				5887669A2F36AB7E00B9506B /* Frameworks */,
-				5887669B2F36AB7E00B9506B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				588766A32F36AB7E00B9506B /* PBXTargetDependency */,
-			);
-			name = VidCoreTests;
-			packageProductDependencies = (
-			);
-			productName = VidCoreTests;
-			productReference = 5887669D2F36AB7E00B9506B /* VidCoreTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		58A458FA2EF5C76D003F504E /* VidPreview */ = {
 			isa = PBXNativeTarget;
@@ -411,7 +303,6 @@
 			dependencies = (
 				581739762EF6B9C100894B31 /* PBXTargetDependency */,
 				58455B232F16DC4500AA5E23 /* PBXTargetDependency */,
-				586CB66D2F374F12003E7C00 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				58A458FD2EF5C76D003F504E /* VidPreview */,
@@ -422,29 +313,6 @@
 			productName = VidPreview;
 			productReference = 58A458FB2EF5C76D003F504E /* VidPreview.app */;
 			productType = "com.apple.product-type.application";
-		};
-		58F669A82EF6C847003BA262 /* VidCore */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 58F669B32EF6C847003BA262 /* Build configuration list for PBXNativeTarget "VidCore" */;
-			buildPhases = (
-				58F669A42EF6C847003BA262 /* Headers */,
-				58F669A52EF6C847003BA262 /* Sources */,
-				58F669A62EF6C847003BA262 /* Frameworks */,
-				58F669A72EF6C847003BA262 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				58F669AA2EF6C847003BA262 /* VidCore */,
-			);
-			name = VidCore;
-			packageProductDependencies = (
-			);
-			productName = VidCore;
-			productReference = 58F669A92EF6C847003BA262 /* VidCore.framework */;
-			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -462,13 +330,7 @@
 					58455B1A2F16DC4500AA5E23 = {
 						CreatedOnToolsVersion = 26.2;
 					};
-					5887669C2F36AB7E00B9506B = {
-						CreatedOnToolsVersion = 26.3;
-					};
 					58A458FA2EF5C76D003F504E = {
-						CreatedOnToolsVersion = 26.2;
-					};
-					58F669A82EF6C847003BA262 = {
 						CreatedOnToolsVersion = 26.2;
 					};
 				};
@@ -485,16 +347,30 @@
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 58A458FC2EF5C76D003F504E /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 58AB7A4F2F37B5030058B125 /* Products */;
+					ProjectRef = 58AB7A4E2F37B5030058B125 /* VidCore.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				58A458FA2EF5C76D003F504E /* VidPreview */,
 				581739692EF6B9C100894B31 /* VidPreviewQuickLook */,
-				58F669A82EF6C847003BA262 /* VidCore */,
 				58455B1A2F16DC4500AA5E23 /* VidPreviewThumbnail */,
-				5887669C2F36AB7E00B9506B /* VidCoreTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		5800203F2F37B53B00BC4CC1 /* VidCore.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = VidCore.framework;
+			remoteRef = 5800203E2F37B53B00BC4CC1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		581739682EF6B9C100894B31 /* Resources */ = {
@@ -512,26 +388,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5887669B2F36AB7E00B9506B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		58A458F92EF5C76D003F504E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				58FED0852EF6CDCF001AB3DA /* AppIcon.icon in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		58F669A72EF6C847003BA262 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				58FED0862EF6CDCF001AB3DA /* AppIcon.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,21 +413,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		588766992F36AB7E00B9506B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		58A458F72EF5C76D003F504E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		58F669A52EF6C847003BA262 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -585,26 +432,6 @@
 			isa = PBXTargetDependency;
 			target = 58455B1A2F16DC4500AA5E23 /* VidPreviewThumbnail */;
 			targetProxy = 58455B222F16DC4500AA5E23 /* PBXContainerItemProxy */;
-		};
-		586CB66D2F374F12003E7C00 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 58F669A82EF6C847003BA262 /* VidCore */;
-			targetProxy = 586CB66C2F374F12003E7C00 /* PBXContainerItemProxy */;
-		};
-		588766A32F36AB7E00B9506B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 58F669A82EF6C847003BA262 /* VidCore */;
-			targetProxy = 588766A22F36AB7E00B9506B /* PBXContainerItemProxy */;
-		};
-		58AC747E2F16E29D00BF8BAF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 58F669A82EF6C847003BA262 /* VidCore */;
-			targetProxy = 58AC747D2F16E29D00BF8BAF /* PBXContainerItemProxy */;
-		};
-		58F669DD2EF6C924003BA262 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 58F669A82EF6C847003BA262 /* VidCore */;
-			targetProxy = 58F669DC2EF6C924003BA262 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -734,42 +561,6 @@
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		588766A42F36AB7E00B9506B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CM6PR6R3U2;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = uk.tarun.VidCoreTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		588766A52F36AB7E00B9506B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CM6PR6R3U2;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = uk.tarun.VidCoreTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -999,140 +790,6 @@
 			};
 			name = Release;
 		};
-		58F669B42EF6C847003BA262 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = CM6PR6R3U2;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/VidCore/Frameworks/FFmpeg/include";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(SRCROOT)/VidCore/Frameworks/FFmpeg/lib",
-					"$(PROJECT_DIR)/VidCore/Frameworks/FFmpeg/lib",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 15.6;
-				MARKETING_VERSION = 1.0;
-				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				OTHER_CFLAGS = (
-					"$(inherited)",
-					"-Wno-documentation",
-					"-Wno-documentation-html",
-				);
-				OTHER_LDFLAGS = (
-					"-framework",
-					VideoToolbox,
-					"-framework",
-					CoreMedia,
-					"-framework",
-					CoreVideo,
-					"-framework",
-					AudioToolbox,
-					"-framework",
-					Security,
-					"-lz",
-					"-lbz2",
-					"-liconv",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = uk.tarun.VidCore;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_INSTALL_MODULE = YES;
-				SWIFT_INSTALL_OBJC_HEADER = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		58F669B52EF6C847003BA262 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = CM6PR6R3U2;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/VidCore/Frameworks/FFmpeg/include";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(SRCROOT)/VidCore/Frameworks/FFmpeg/lib",
-					"$(PROJECT_DIR)/VidCore/Frameworks/FFmpeg/lib",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 15.6;
-				MARKETING_VERSION = 1.0;
-				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				OTHER_CFLAGS = (
-					"$(inherited)",
-					"-Wno-documentation",
-					"-Wno-documentation-html",
-				);
-				OTHER_LDFLAGS = (
-					"-framework",
-					VideoToolbox,
-					"-framework",
-					CoreMedia,
-					"-framework",
-					CoreVideo,
-					"-framework",
-					AudioToolbox,
-					"-framework",
-					Security,
-					"-lz",
-					"-lbz2",
-					"-liconv",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = uk.tarun.VidCore;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_INSTALL_MODULE = YES;
-				SWIFT_INSTALL_OBJC_HEADER = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1154,15 +811,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		588766A62F36AB7E00B9506B /* Build configuration list for PBXNativeTarget "VidCoreTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				588766A42F36AB7E00B9506B /* Debug */,
-				588766A52F36AB7E00B9506B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		58A458F62EF5C76D003F504E /* Build configuration list for PBXProject "VidPreview" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1177,15 +825,6 @@
 			buildConfigurations = (
 				58A459092EF5C76E003F504E /* Debug */,
 				58A4590A2EF5C76E003F504E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		58F669B32EF6C847003BA262 /* Build configuration list for PBXNativeTarget "VidCore" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				58F669B42EF6C847003BA262 /* Debug */,
-				58F669B52EF6C847003BA262 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
