@@ -13,10 +13,10 @@ VidPreview brings full video playback capabilities to macOS QuickLook (press **S
 ## Features
 
 - **QuickLook Integration**: Preview videos directly in Finder with spacebar
-- **Broad Container Support**: MKV, WebM, AVI, Ogg/Theora
+- **Broad Container Support**: MKV, WebM, AVI, Ogg/Theora, and more
 - **Wide Codec Support**: H.264, H.265/HEVC, VP8, VP9, AV1, and more
-- **HDR Support**: Comprehensive support including HDR10, HLG, and Dolby Vision Profile 5
-- **Audio Playback**: Synchronized audio support
+- **HDR Support**: Comprehensive support including HDR10, HLG, and Dolby Vision
+- **Track selection**: Switch audio and subtitle tracks easily
 - **Thumbnail Support**: Generates thumbnails for unsupported video formats in Finder
 
 ## VidCore
@@ -37,30 +37,26 @@ brew install ptaru/tap/vidpreview
 
 ### Building from Source
 
-1. **Clone the repository including the VidCore submodule**:
+1. **Clone the repository**:
    ```bash
-   git clone --recursive https://github.com/ptaru/VidPreview.git
+   git clone https://github.com/ptaru/VidPreview.git
    cd VidPreview
    ```
 
-2. **Build FFmpeg + dav1d**:
-   VidPreview uses bundled static libraries for FFmpeg and dav1d. If they are missing, build them using the included script:
+2. **Build VidCore**:
+   VidPreview is powered by [VidCore](https://github.com/ptaru/VidCore). You must build it before the main application, following the instructions in its README.
 
-   ```bash
-   # Install build tools
-   brew install nasm meson ninja pkg-config
+3. **Embed VidCore framework**:
+   Ensure `VidCore.framework` is properly embedded in the VidPreview targets:
+   - For **VidPreview**, **VidPreviewQuickLook**, and **VidPreviewThumbnail** targets:
+     - Go to **General** → **Frameworks, Libraries, and Embedded Content**
+     - Ensure `VidCore.framework` is added and set to **Embed & Sign**
 
-   # Run build script
-   cd VidCore/Scripts
-   ./build-ffmpeg.sh
-   ```
-
-3. **Build the project**:
-   - Open `VidPreview.xcodeproj` in Xcode
+4. **Build the project**:
    - Select **VidPreview** scheme
    - Build (⌘B) and Run (⌘R)
 
-4. **Enable the QuickLook extension**:
+5. **Enable the QuickLook extension**:
    After building and running once:
    - Go to **System Settings** → **Privacy & Security** → **Extensions** → **Quick Look**
    - Enable **VidPreview**
@@ -86,17 +82,6 @@ brew install ptaru/tap/vidpreview
 2. Check **System Settings** → **Privacy & Security** → **Extensions** → **Quick Look**
 3. Enable **VidPreview**
 4. Restart Finder: `killall Finder`
-
-### Video not playing
-
-1. Check that the video file is a supported format
-2. View Console.app for error messages (filter by "VidPreview")
-
-### Build errors
-
-1. Ensure FFmpeg libraries were built: `ls VidCore/Frameworks/FFmpeg/lib`
-2. If missing, run `VidCore/Scripts/build-ffmpeg.sh`
-3. Clean build folder (⇧⌘K) and rebuild
 
 ## Acknowledgments
 

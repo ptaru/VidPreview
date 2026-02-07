@@ -26,10 +26,10 @@ struct QuickLookPlayerView: View {
           HStack(spacing: 8) {
             if viewModel.audioTracks.count > 0 || viewModel.subtitleTracks.count > 0 {
               QLTrackSelector(viewModel: viewModel, isMenuPresented: $isTrackMenuVisible)
-                .glassedEffect(in: .capsule, interactive: true)
+                .glassedEffect(in: .rect(cornerRadius: 8), interactive: true)
             }
             QLVolumeControl(viewModel: viewModel)
-              .glassedEffect(in: .capsule, interactive: true)
+              .glassedEffect(in: .rect(cornerRadius: 8), interactive: true)
           }
           .padding(8)
           .opacity(shouldShowControls ? 1 : 0)
@@ -38,7 +38,7 @@ struct QuickLookPlayerView: View {
         Spacer()
 
         QLPlayerControls(viewModel: viewModel)
-          .glassedEffect(in: .capsule, interactive: true)
+          .glassedEffect(in: .rect(cornerRadius: 8), interactive: true)
           .padding(8)
           .opacity(shouldShowControls ? 1 : 0)
       }
