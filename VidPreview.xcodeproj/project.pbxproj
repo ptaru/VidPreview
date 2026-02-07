@@ -12,6 +12,8 @@
 		58455B1C2F16DC4500AA5E23 /* QuickLookThumbnailing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58455B002F16D87400AA5E23 /* QuickLookThumbnailing.framework */; };
 		58455B1D2F16DC4500AA5E23 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581739532EF6B98F00894B31 /* Quartz.framework */; };
 		58455B242F16DC4500AA5E23 /* VidPreviewThumbnail.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 58455B1B2F16DC4500AA5E23 /* VidPreviewThumbnail.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		586CB66A2F374F12003E7C00 /* VidCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F669A92EF6C847003BA262 /* VidCore.framework */; };
+		586CB66B2F374F12003E7C00 /* VidCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 58F669A92EF6C847003BA262 /* VidCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		588766A12F36AB7E00B9506B /* VidCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F669A92EF6C847003BA262 /* VidCore.framework */; };
 		58AC747B2F16E29D00BF8BAF /* VidCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F669A92EF6C847003BA262 /* VidCore.framework */; };
 		58AC747C2F16E29D00BF8BAF /* VidCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 58F669A92EF6C847003BA262 /* VidCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -36,6 +38,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 58455B1A2F16DC4500AA5E23;
 			remoteInfo = VidPreviewThumbnail;
+		};
+		586CB66C2F374F12003E7C00 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 58A458F32EF5C76D003F504E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 58F669A82EF6C847003BA262;
+			remoteInfo = VidCore;
 		};
 		588766A22F36AB7E00B9506B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -71,6 +80,17 @@
 				581739772EF6B9C100894B31 /* VidPreviewQuickLook.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		586CB66E2F374F12003E7C00 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				586CB66B2F374F12003E7C00 /* VidCore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		58AC747F2F16E29D00BF8BAF /* Embed Frameworks */ = {
@@ -131,7 +151,6 @@
 				VidCoreTests/PacketQueueTests.swift,
 				VidCoreTests/PlaybackStateTests.swift,
 				VidCoreTests/SubtitleFrameTests.swift,
-				VidCoreTests/SubtitleParserTests.swift,
 				VidCoreTests/TrackInfoTests.swift,
 				VidCoreTests/VideoFrameTests.swift,
 				VidCoreTests/VideoInfoTests.swift,
@@ -161,16 +180,11 @@
 		58F669DF2EF6C9E1003BA262 /* Exceptions for "VidCore" folder in "VidCore" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Scripts/check_ambient.swift,
-				Scripts/dovi_check.swift,
-				Scripts/list_attachments.swift,
-				Scripts/subtitle_parser.swift,
 				VidCoreTests/BuffersTests.swift,
 				VidCoreTests/ColorParsingTests.swift,
 				VidCoreTests/PacketQueueTests.swift,
 				VidCoreTests/PlaybackStateTests.swift,
 				VidCoreTests/SubtitleFrameTests.swift,
-				VidCoreTests/SubtitleParserTests.swift,
 				VidCoreTests/TrackInfoTests.swift,
 				VidCoreTests/VideoFrameTests.swift,
 				VidCoreTests/VideoInfoTests.swift,
@@ -179,6 +193,7 @@
 			publicHeaders = (
 				Decoding/FFmpegDecoder.h,
 				Demuxing/FFmpegDemuxer.h,
+				Subtitles/LibASSRenderer.h,
 				VidCore.h,
 			);
 			target = 58F669A82EF6C847003BA262 /* VidCore */;
@@ -259,6 +274,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				586CB66A2F374F12003E7C00 /* VidCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,12 +415,14 @@
 				58A458F82EF5C76D003F504E /* Frameworks */,
 				58A458F92EF5C76D003F504E /* Resources */,
 				581739612EF6B98F00894B31 /* Embed Foundation Extensions */,
+				586CB66E2F374F12003E7C00 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				581739762EF6B9C100894B31 /* PBXTargetDependency */,
 				58455B232F16DC4500AA5E23 /* PBXTargetDependency */,
+				586CB66D2F374F12003E7C00 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				58A458FD2EF5C76D003F504E /* VidPreview */,
@@ -578,6 +596,11 @@
 			isa = PBXTargetDependency;
 			target = 58455B1A2F16DC4500AA5E23 /* VidPreviewThumbnail */;
 			targetProxy = 58455B222F16DC4500AA5E23 /* PBXContainerItemProxy */;
+		};
+		586CB66D2F374F12003E7C00 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 58F669A82EF6C847003BA262 /* VidCore */;
+			targetProxy = 586CB66C2F374F12003E7C00 /* PBXContainerItemProxy */;
 		};
 		588766A32F36AB7E00B9506B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
