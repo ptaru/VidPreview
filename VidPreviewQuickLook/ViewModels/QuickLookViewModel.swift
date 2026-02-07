@@ -44,15 +44,42 @@ class QuickLookViewModel {
     set { player.volume = newValue }
   }
 
-  private var preMuteVolume: Double = 1.0
+  var volumeSlider: Double {
+    get { Self.sliderValue(fromGain: player.volume) }
+    set { player.volume = Self.gain(fromSlider: newValue) }
+  }
+
+  private var preMuteVolumeSlider: Double = 1.0
 
   func toggleMute() {
     if volume > 0 {
-      preMuteVolume = volume
+      preMuteVolumeSlider = volumeSlider
       volume = 0
     } else {
-      volume = preMuteVolume > 0 ? preMuteVolume : 1.0
+      let restore = preMuteVolumeSlider > 0 ? preMuteVolumeSlider : 1.0
+      volumeSlider = restore
     }
+  }
+
+  private static let minVolumeDb: Double = -50.0
+
+  private static func gain(fromSlider value: Double) -> Double {
+    let clamped = max(0.0, min(value, 1.0))
+    if clamped == 0 {
+      return 0
+    }
+    let db = minVolumeDb + (0 - minVolumeDb) * clamped
+    return pow(10.0, db / 20.0)
+  }
+
+  private static func sliderValue(fromGain gain: Double) -> Double {
+    let clamped = max(0.0, min(gain, 1.0))
+    if clamped == 0 {
+      return 0
+    }
+    let db = 20.0 * log10(clamped)
+    let slider = (db - minVolumeDb) / (0 - minVolumeDb)
+    return max(0.0, min(slider, 1.0))
   }
 
   /// Shows pause button if playing, or if we were playing before scrubbing started

@@ -10,6 +10,7 @@ import UniformTypeIdentifiers
 
 struct SettingsView: View {
   @Environment(\.openWindow) private var openWindow
+  @State private var isTargeted = false
 
   var body: some View {
     VStack(spacing: 24) {
@@ -27,7 +28,7 @@ struct SettingsView: View {
           .font(.title3)
           .foregroundStyle(.secondary)
       }
-      .padding(.top, 20)
+      .padding(.top, 40)
 
       Divider()
         .padding(.horizontal, 40)
@@ -65,25 +66,23 @@ struct SettingsView: View {
         Text("Supported Formats")
           .font(.headline)
 
-        HStack(spacing: 16) {
-          FormatBadge(format: "MKV")
-          FormatBadge(format: "WebM")
-          FormatBadge(format: "AVI")
-          FormatBadge(format: "Ogg")
+        VStack(spacing: 8) {
+          HStack(spacing: 12) {
+            FormatBadge(format: "MKV")
+            FormatBadge(format: "MP4")
+            FormatBadge(format: "MOV")
+            FormatBadge(format: "AVI")
+            FormatBadge(format: "WebM")
+          }
+          HStack(spacing: 12) {
+            FormatBadge(format: "FLV")
+            FormatBadge(format: "WMV")
+            FormatBadge(format: "VOB")
+            FormatBadge(format: "TS")
+            FormatBadge(format: "OGG")
+          }
         }
       }
-
-      Button {
-        openFile()
-      } label: {
-        Label("Open File...", systemImage: "doc.badge.plus")
-          .font(.title2)
-          .padding(.horizontal, 16)
-          .padding(.vertical, 8)
-      }
-      .buttonStyle(.borderedProminent)
-      .controlSize(.large)
-      .keyboardShortcut("o", modifiers: .command)
 
       // Footer
       Text("Made by Tarun")
@@ -91,22 +90,20 @@ struct SettingsView: View {
         .foregroundStyle(.tertiary)
         .padding(.bottom, 16)
     }
-    .frame(minWidth: 400, minHeight: 550)
+    .frame(minWidth: 400, maxWidth: 400)
     .background(Color(nsColor: .windowBackgroundColor))
-  }
+    .onDrop(of: [.fileURL], isTargeted: $isTargeted) { providers in
+      guard let provider = providers.first else { return false }
 
-  private func openFile() {
-    let panel = NSOpenPanel()
-    panel.allowsMultipleSelection = false
-    panel.canChooseDirectories = false
-    panel.canChooseFiles = true
-    panel.allowedContentTypes = [.movie, .video, .audiovisualContent]
-
-    panel.begin { response in
-      if response == .OK, let url = panel.url {
-        BookmarkManager.shared.saveBookmark(for: url)
-        openWindow(value: url)
+      provider.loadObject(ofClass: URL.self) { url, error in
+        if let url = url {
+          DispatchQueue.main.async {
+            BookmarkManager.shared.saveBookmark(for: url)
+            openWindow(value: url)
+          }
+        }
       }
+      return true
     }
   }
 }

@@ -19,6 +19,8 @@ struct PlayerWindow: View {
         ProgressView()
       }
     }
+    .ignoresSafeArea()
+    .toolbarBackground(.hidden, for: .windowToolbar)
     .task {
       // Try to resolve bookmark permissions first
       var targetURL = url

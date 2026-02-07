@@ -11,7 +11,7 @@ struct QLVolumeControl: View {
     
     var body: some View {
         HStack(spacing: 8) {
-            Slider(value: $viewModel.volume, in: 0...1)
+            Slider(value: $viewModel.volumeSlider, in: 0...1)
                 .frame(width: 100)
                 .controlSize(.small)
             
@@ -29,11 +29,11 @@ struct QLVolumeControl: View {
     }
     
     private var volumeIcon: String {
-        if viewModel.volume == 0 {
+        if viewModel.volumeSlider == 0 {
             return "speaker.slash.fill"
-        } else if viewModel.volume < 0.33 {
+        } else if viewModel.volumeSlider < 0.33 {
             return "speaker.wave.1.fill"
-        } else if viewModel.volume < 0.67 {
+        } else if viewModel.volumeSlider < 0.67 {
             return "speaker.wave.2.fill"
         } else {
             return "speaker.wave.3.fill"
