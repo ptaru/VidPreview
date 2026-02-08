@@ -17,7 +17,7 @@ import VidCore
 class QuickLookViewModel {
   // MARK: - Player
 
-  let player = VideoPlayer(buffers: .auto)
+  let player = MediaPlayer(buffers: .auto)
   private let url: URL
 
   // MARK: - UI State (QuickLook-specific)

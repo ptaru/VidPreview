@@ -22,7 +22,7 @@ class ThumbnailProvider: QLThumbnailProvider {
     // Run thumbnail generation in a Task to support async/await
     Task {
       do {
-        let decoder = try VideoDecoder(url: fileURL)
+        let decoder = try MediaDecoder(url: fileURL)
         let videoInfo = decoder.videoInfo
 
         // Calculate the target size maintaining aspect ratio
