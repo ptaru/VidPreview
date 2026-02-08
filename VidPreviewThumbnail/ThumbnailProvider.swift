@@ -19,8 +19,8 @@ class ThumbnailProvider: QLThumbnailProvider {
     let fileURL = request.fileURL
     let maxSize = request.maximumSize
 
-    // Run thumbnail generation on a background thread
-    DispatchQueue.global(qos: .userInitiated).async {
+    // Run thumbnail generation in a Task to support async/await
+    Task {
       do {
         let decoder = try VideoDecoder(url: fileURL)
         let videoInfo = decoder.videoInfo
@@ -35,10 +35,11 @@ class ThumbnailProvider: QLThumbnailProvider {
         )
 
         // Try embedded cover image first (common in MKV files)
-        if let coverData = decoder.extractCoverImage(),
+        // extractCoverImage is likely async now
+        if let coverData = await decoder.extractCoverImage(),
           let image = NSImage(data: coverData)
         {
-          // Use the cover image's own dimensions, not the video dimensions
+          // Use the cover image's own dimensions
           let coverWidth = image.size.width
           let coverHeight = image.size.height
           let coverTargetSize = Self.calculateThumbnailSize(
@@ -55,74 +56,60 @@ class ThumbnailProvider: QLThumbnailProvider {
           return
         }
 
-        // Use a semaphore to bridge async/sync
-        let semaphore = DispatchSemaphore(value: 0)
         var extractedCGImage: CGImage?
 
-        Task {
-          // Initialize rendering engine for GPU-accelerated YUV conversion
+        // Try multiple seek positions as fallback
+        let seekPositions: [Double] = [
+          videoInfo.duration * 0.1,  // 10% - skip intros
+          5.0,  // 5 seconds - fallback
+          0.0,  // Beginning - last resort
+        ]
 
-          // Try multiple seek positions as fallback
-          // Some files may have issues seeking to certain positions
-          let seekPositions: [Double] = [
-            videoInfo.duration * 0.1,  // 10% - skip intros
-            5.0,  // 5 seconds - fallback
-            0.0,  // Beginning - last resort
-          ]
+        for seekTime in seekPositions {
+          // Seek to target position
+          do {
+            _ = try await decoder.seek(to: max(0, seekTime))
+          } catch {
+            continue
+          }
 
-          for seekTime in seekPositions {
-            // Seek to target position (use keyframe seek for speed)
-            do {
-              try await decoder.seek(to: max(0, seekTime))
-            } catch {
-              // Seek failed, try next position
+          // Decode packets until we get a video frame
+          var packetCount = 0
+          let maxPackets = 200
+
+          while packetCount < maxPackets {
+            guard let packet = await decoder.demuxNextPacket() else {
+              break
+            }
+
+            // Skip non-video packets quickly
+            guard packet.isVideo else {
+              packetCount += 1
               continue
             }
-
-            // Decode packets until we get a video frame
-            // Hardware decoders may need many packets before producing output
-            var packetCount = 0
-            let maxPackets = 200
-
-            while packetCount < maxPackets {
-              guard let packet = await decoder.demuxNextPacket() else {
+            
+            // Decode
+            let frames = await decoder.decodePacket(packet)
+            
+            for frame in frames {
+              if case .video(let videoFrame) = frame {
+                // Use System Renderer logic to convert to CGImage
+                extractedCGImage = AVSystemVideoRenderer.createCGImage(from: videoFrame)
                 break
               }
-
-              // Skip non-video packets quickly
-              guard packet.isVideo else {
-                packetCount += 1
-                continue
-              }
-
-              let frames = await decoder.decodePacket(packet)
-              for frame in frames {
-                if case .video(let videoFrame) = frame {
-                  // Use System Renderer logic to convert to CGImage
-                  // This handles all pixel formats and Dolby Vision
-                  extractedCGImage = AVSystemVideoRenderer.createCGImage(from: videoFrame)
-                  break
-                }
-              }
-
-              if extractedCGImage != nil {
-                break
-              }
-
-              packetCount += 1
             }
 
-            // If we got an image, we're done
             if extractedCGImage != nil {
               break
             }
+
+            packetCount += 1
           }
 
-          semaphore.signal()
+          if extractedCGImage != nil {
+            break
+          }
         }
-
-        // Wait for async frame extraction
-        semaphore.wait()
 
         guard let cgImage = extractedCGImage else {
           decoder.close()
