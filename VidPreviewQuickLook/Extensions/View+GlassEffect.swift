@@ -33,7 +33,7 @@ extension Shape {
                         .primary.opacity(0.01),
                         .clear,
                         .clear,
-                        .clear
+                        .clear,
                     ],
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing

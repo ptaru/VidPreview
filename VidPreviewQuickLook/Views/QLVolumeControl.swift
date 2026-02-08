@@ -8,13 +8,13 @@ import VidCore
 
 struct QLVolumeControl: View {
     @Bindable var viewModel: QuickLookViewModel
-    
+
     var body: some View {
         HStack(spacing: 8) {
             Slider(value: $viewModel.volumeSlider, in: 0...1)
                 .frame(width: 100)
                 .controlSize(.small)
-            
+
             Button(action: {
                 viewModel.toggleMute()
             }) {
@@ -27,7 +27,7 @@ struct QLVolumeControl: View {
         }
         .padding(8)
     }
-    
+
     private var volumeIcon: String {
         if viewModel.volumeSlider == 0 {
             return "speaker.slash.fill"
