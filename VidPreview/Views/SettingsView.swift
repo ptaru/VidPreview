@@ -95,7 +95,7 @@ struct SettingsView: View {
     .onDrop(of: [.fileURL], isTargeted: $isTargeted) { providers in
       guard let provider = providers.first else { return false }
 
-      provider.loadObject(ofClass: URL.self) { url, error in
+      _ = provider.loadObject(ofClass: URL.self) { url, error in
         if let url = url {
           DispatchQueue.main.async {
             BookmarkManager.shared.saveBookmark(for: url)

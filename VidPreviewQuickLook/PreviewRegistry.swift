@@ -40,7 +40,6 @@ final class PreviewRegistry {
             guard let controller = ref.controller, controller !== active else { continue }
             
             if controller.viewModel?.isPlaying == true {
-                let fileName = controller.currentFileURL?.lastPathComponent ?? "unknown"
                 controller.viewModel?.pause()
             }
         }
@@ -50,9 +49,7 @@ final class PreviewRegistry {
     
     /// Removes any weak refs that have become nil (handles arbitrary deallocation)
     private func cleanupStaleRefs() {
-        let beforeCount = previews.count
         previews = previews.filter { $0.value.controller != nil }
-        let removed = beforeCount - previews.count
     }
     
     /// Wrapper to hold weak reference to PreviewViewController
