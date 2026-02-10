@@ -11,9 +11,12 @@ struct QLVolumeControl: View {
 
     var body: some View {
         HStack(spacing: 8) {
-            Slider(value: $viewModel.volumeSlider, in: 0...1)
-                .frame(width: 100)
-                .controlSize(.small)
+            GlassSlider(
+                value: $viewModel.volumeSlider,
+                range: 0...1,
+                tintColor: Color(red: 0, green: 0.5, blue: 1.0)
+            )
+            .frame(width: 100)
 
             Button(action: {
                 viewModel.toggleMute()

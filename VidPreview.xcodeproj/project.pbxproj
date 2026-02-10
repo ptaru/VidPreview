@@ -130,6 +130,8 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				"Extensions/View+GlassEffect.swift",
+				Glass.metal,
+				GlassSlider.swift,
 				ViewModels/QuickLookViewModel.swift,
 				Views/QLPlayerControls.swift,
 				Views/QLTrackSelector.swift,
