@@ -10,9 +10,7 @@
 		580020422F37B53B00BC4CC1 /* VidCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5800203F2F37B53B00BC4CC1 /* VidCore.framework */; };
 		580020432F37B53B00BC4CC1 /* VidCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5800203F2F37B53B00BC4CC1 /* VidCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		580020442F37B54000BC4CC1 /* VidCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5800203F2F37B53B00BC4CC1 /* VidCore.framework */; };
-		580020452F37B54000BC4CC1 /* VidCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5800203F2F37B53B00BC4CC1 /* VidCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		580020462F37B54400BC4CC1 /* VidCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5800203F2F37B53B00BC4CC1 /* VidCore.framework */; };
-		580020472F37B54400BC4CC1 /* VidCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5800203F2F37B53B00BC4CC1 /* VidCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5817396B2EF6B9C100894B31 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581739532EF6B98F00894B31 /* Quartz.framework */; };
 		581739772EF6B9C100894B31 /* VidPreviewQuickLook.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5817396A2EF6B9C100894B31 /* VidPreviewQuickLook.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		58455B1C2F16DC4500AA5E23 /* QuickLookThumbnailing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58455B002F16D87400AA5E23 /* QuickLookThumbnailing.framework */; };
@@ -66,28 +64,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				580020432F37B53B00BC4CC1 /* VidCore.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		58AC747F2F16E29D00BF8BAF /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				580020472F37B54400BC4CC1 /* VidCore.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		58F669DE2EF6C924003BA262 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				580020452F37B54000BC4CC1 /* VidCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,7 +227,6 @@
 				581739662EF6B9C100894B31 /* Sources */,
 				581739672EF6B9C100894B31 /* Frameworks */,
 				581739682EF6B9C100894B31 /* Resources */,
-				58F669DE2EF6C924003BA262 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -274,7 +249,6 @@
 				58455B172F16DC4500AA5E23 /* Sources */,
 				58455B182F16DC4500AA5E23 /* Frameworks */,
 				58455B192F16DC4500AA5E23 /* Resources */,
-				58AC747F2F16E29D00BF8BAF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -458,7 +432,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.6;
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.tarun.VidPreview.VidPreviewQuickLook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = YES;
@@ -491,7 +465,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.6;
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.tarun.VidPreview.VidPreviewQuickLook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = YES;
@@ -524,7 +498,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.6;
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.tarun.VidPreview.VidPreviewThumbnail;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -556,7 +530,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.6;
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.tarun.VidPreview.VidPreviewThumbnail;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -599,7 +573,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.6;
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.tarun.VidPreview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -649,7 +623,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.6;
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.tarun.VidPreview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;

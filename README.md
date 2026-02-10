@@ -73,11 +73,18 @@ brew install ptaru/tap/vidpreview
 3. Press **Space** to open QuickLook
 4. Video will play automatically with full playback controls
 
-### Supported Codecs
+### Audio/video formats
+- Hardware decoding for all formats supported by VideoToolbox and AudioToolbox
+- Software decoding for all formats supported by libavcodec (dav1d used instead of libaom for AV1)
 
-**Video**: H.264, H.265/HEVC, VP8, VP9, AV1, MPEG-4, Theora, and more
 
-**Audio**: AAC, MP3, Opus, Vorbis, FLAC, PCM
+### Subtitle formats
+- Advanced Rendering: ASS/SSA (Advanced Substation Alpha) via libass
+- Text: SRT (SubRip)
+- Bitmap/Image-based: PGS (Blu-ray) and VobSub (DVD)
+
+### Container Formats
+- Internally supports all standard libavformat demuxers, but the Quick Look and thumbnail extensions register themselves for mp4, m4v, mov, mkv, avi, webm, flv, wmv, asf, ogv, ogm, ogg, ts, mts, m2ts, vob, vro, divx, xvid, 3gp, 3g2, dv, mxf, gxf, rm, rmvb, wtv, xesc, mpg, mpeg, m2v, tod, mod, nsv, nuv, rec, dvr-ms, dvdmedia, flc, and bdav
 
 ## Troubleshooting
 
