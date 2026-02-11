@@ -23,6 +23,11 @@ class QuickLookViewModel {
     var isScrubbing: Bool = false
     private(set) var userManuallyPaused: Bool = false
     private var scrubbingTask: Task<Void, Never>?
+    private var scrubFlushTask: Task<Void, Never>?
+    private var pendingScrubTime: Double?
+    private var lastScrubInputTime: Double?
+    private var lastScrubInputTimestamp: TimeInterval?
+    private var lastScrubDispatchTimestamp: TimeInterval?
 
     // MARK: - Passthrough Properties
 
@@ -124,6 +129,7 @@ class QuickLookViewModel {
     func beginScrub() {
         guard !isScrubbing else { return }
         isScrubbing = true
+        resetScrubRateLimiterState()
         let previous = scrubbingTask
         scrubbingTask = Task { @MainActor in
             _ = await previous?.result
@@ -132,19 +138,93 @@ class QuickLookViewModel {
     }
 
     func scrub(to time: Double) {
-        let previous = scrubbingTask
-        scrubbingTask = Task { @MainActor in
-            _ = await previous?.result
-            await player.scrub(to: time)
+        let now = Date.timeIntervalSinceReferenceDate
+        let velocity = scrubVelocity(for: time, at: now)
+        let minInterval = minimumScrubDispatchInterval(for: velocity)
+
+        pendingScrubTime = time
+        lastScrubInputTime = time
+        lastScrubInputTimestamp = now
+
+        let elapsedSinceLastDispatch = lastScrubDispatchTimestamp.map { now - $0 } ?? .infinity
+        if elapsedSinceLastDispatch >= minInterval {
+            flushPendingScrub(at: now)
+        } else {
+            schedulePendingScrubFlush(after: minInterval - elapsedSinceLastDispatch)
         }
     }
 
     func endScrub() {
+        scrubFlushTask?.cancel()
+        flushPendingScrub(at: Date.timeIntervalSinceReferenceDate)
+
         let previous = scrubbingTask
         scrubbingTask = Task { @MainActor in
             _ = await previous?.result
             await player.endScrub()
             isScrubbing = false
+            resetScrubRateLimiterState()
+        }
+    }
+
+    private func resetScrubRateLimiterState() {
+        scrubFlushTask?.cancel()
+        scrubFlushTask = nil
+        pendingScrubTime = nil
+        lastScrubInputTime = nil
+        lastScrubInputTimestamp = nil
+        lastScrubDispatchTimestamp = nil
+    }
+
+    private func scrubVelocity(for targetTime: Double, at timestamp: TimeInterval) -> Double {
+        guard let previousTime = lastScrubInputTime,
+              let previousTimestamp = lastScrubInputTimestamp else {
+            return 0
+        }
+
+        let deltaTimestamp = timestamp - previousTimestamp
+        guard deltaTimestamp > 0.0005 else {
+            return .infinity
+        }
+
+        return abs(targetTime - previousTime) / deltaTimestamp
+    }
+
+    private func minimumScrubDispatchInterval(for velocity: Double) -> TimeInterval {
+        if velocity <= 1.25 { return 0 }
+        if velocity <= 5 { return 1.0 / 120.0 }
+        if velocity <= 20 { return 1.0 / 60.0 }
+        if velocity <= 60 { return 1.0 / 30.0 }
+        return 1.0 / 15.0
+    }
+
+    private func flushPendingScrub(at timestamp: TimeInterval) {
+        guard let target = pendingScrubTime else { return }
+
+        pendingScrubTime = nil
+        scrubFlushTask?.cancel()
+        scrubFlushTask = nil
+        lastScrubDispatchTimestamp = timestamp
+
+        let previous = scrubbingTask
+        scrubbingTask = Task { @MainActor in
+            _ = await previous?.result
+            await player.scrub(to: target)
+        }
+    }
+
+    private func schedulePendingScrubFlush(after delay: TimeInterval) {
+        scrubFlushTask?.cancel()
+
+        guard delay > 0 else {
+            flushPendingScrub(at: Date.timeIntervalSinceReferenceDate)
+            return
+        }
+
+        scrubFlushTask = Task { @MainActor in
+            try? await Task.sleep(nanoseconds: UInt64(delay * 1_000_000_000))
+            guard !Task.isCancelled else { return }
+            flushPendingScrub(at: Date.timeIntervalSinceReferenceDate)
         }
     }
 
