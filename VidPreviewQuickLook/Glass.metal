@@ -28,7 +28,7 @@ using namespace metal;
   float2 dir = (d > 0.0) ? normalize(normPos) : float2(0, 0);
 
   // Core Refraction & Chromatic Aberration
-  float magnification = pow(min(d, 1.0), 2.0) * 0.35;
+  float magnification = mix(d, pow(min(d, 1.0), 3.0), 0.7) * 0.45;
   float2 refractedPos = position - dir * (magnification * radius);
 
   float caMask = smoothstep(0.9, 1.0, d);
@@ -73,6 +73,7 @@ using namespace metal;
   half totalAlpha = saturate(bgAlpha + baseGlassAlpha + highlightAlphaContrib);
 
   half3 baseColor = half3(rSample.r, gSample.g, bSample.b) * half(volumeShadow);
+  baseColor *= 1.20; // Multiplicative gain (20%) to brighten midtones/highlights while preserving blacks
   baseColor = mix(baseColor, half3(0.0), blackLightIntensity * 0.3);
 
   half4 effectColor = half4(baseColor, totalAlpha);
