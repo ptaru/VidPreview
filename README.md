@@ -26,7 +26,7 @@ VidPreview brings full video playback capabilities to macOS QuickLook (press **S
 
 ## VidCore
 
-VidPreview is powered by [VidCore](https://github.com/ptaru/VidCore), a Swift-based video playback framework built on FFmpeg and VideoToolbox.
+VidPreview is powered by [VidCore](https://github.com/ptaru/VidCore.framework), a Swift-based video playback framework built on FFmpeg and VideoToolbox.
 
 ## Requirements
 
@@ -49,7 +49,7 @@ brew install ptaru/tap/vidpreview
    ```
 
 2. **Build VidCore**:
-   VidPreview is powered by [VidCore](https://github.com/ptaru/VidCore). You must build it before the main application, following the instructions in its README.
+   VidPreview is powered by [VidCore](https://github.com/ptaru/VidCore.framework). You must build it before the main application, following the instructions in its README.
 
 3. **Embed VidCore framework**:
    Ensure `VidCore.framework` is properly embedded in the VidPreview targets:
